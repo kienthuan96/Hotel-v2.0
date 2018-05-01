@@ -187,10 +187,30 @@ private void readData(String user) {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 String hotel_id =arrayList.get(position).getId();
                 return show(hotel_id);
+
             }
         });
     }
 
+//    public void delete(final int stt){
+//        AlertDialog.Builder alertDialog=new AlertDialog.Builder(this);
+//        alertDialog.setTitle("Thông báo")
+//                .setMessage("Bạn có muốn xóa không?")
+//                .setPositiveButton("Có", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        myRef.child(arrayList.get(stt).getId()).removeValue();
+//                        readData();
+//                    }
+//                })
+//                .setNegativeButton("Không", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                    }
+//                })
+//                .show();
+//    }
 //    private void deleteItem(String hotel_ID) {
 //        FirebaseUser user = mAuth.getCurrentUser();
 //        databaseSQL.delete("favorite", "user_id = ? and hotel_id = ?", new String[]{user.getUid(), hotel_ID});

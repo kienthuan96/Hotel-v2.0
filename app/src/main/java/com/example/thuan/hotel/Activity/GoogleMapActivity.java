@@ -50,7 +50,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCallback, DirectionFinderListener {
+public class GoogleMapActivity extends AppCompatActivity implements GoogleMap.OnMyLocationButtonClickListener,
+        GoogleMap.OnMyLocationClickListener, OnMapReadyCallback, DirectionFinderListener {
 
 
     private GoogleMap mMap;
@@ -133,6 +134,12 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
         }
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+            getLastLocation();
+
+    }
 
     private boolean checkPermissions() {
         int permissionState = ActivityCompat.checkSelfPermission(this,
@@ -169,6 +176,21 @@ public class GoogleMapActivity extends AppCompatActivity implements OnMapReadyCa
         LatLng sydney = new LatLng(10.8165812, 106.6768358);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.setOnMyLocationClickListener(this);
+        mMap.setOnMyLocationClickListener(this);
+    }
+
+    @Override
+    public void onMyLocationClick(@NonNull Location location) {
+        Toast.makeText(this, "Current location:\n" + location, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public boolean onMyLocationButtonClick() {
+        Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT).show();
+        // Return false so that we don't consume the event and the default behavior still occurs
+        // (the camera animates to the user's current position).
+        return false;
     }
 
     @Override
