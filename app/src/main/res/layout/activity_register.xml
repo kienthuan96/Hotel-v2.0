@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:background="@drawable/favorite"
+    android:focusableInTouchMode="true"
+    android:padding="2dp">
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#080808"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:text="Register Account"/>
+
+    <RelativeLayout
+        android:layout_width="374dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="60dp">
+        <!-- Email Label -->
+
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="40dp"
+            android:text="Email:"
+            android:textColor="#080808"
+            android:textSize="25sp" />
+
+        <EditText
+            android:id="@+id/edtEmail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="90dp"
+            android:background="@drawable/custom_edittext_login"
+            android:gravity="center"
+            android:hint="Input your email ..."
+            android:padding="5dp"
+            android:singleLine="true"
+            android:textColor="#212121"
+            android:textSize="23sp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="140dp"
+            android:text="Password:"
+            android:textColor="#080808"
+            android:textSize="25sp" />
+
+        <EditText
+            android:id="@+id/edtPassword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="180dp"
+            android:background="@drawable/custom_edittext_login"
+            android:gravity="center"
+            android:hint="Input your password"
+            android:inputType="textPassword"
+            android:padding="9dp"
+            android:singleLine="true"
+            android:textColor="#212121"
+            android:textSize="23sp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="230dp"
+            android:text="Full Name:"
+            android:textColor="#080808"
+            android:textSize="25sp" />
+
+        <EditText
+            android:singleLine="true"
+            android:gravity="center"
+            android:id="@+id/edtFullName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="270dp"
+            android:background="@drawable/custom_edittext_login"
+            android:hint="Input your Full Name"
+            android:padding="9dp"
+            android:textColor="#212121"
+            android:textSize="23sp" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_register"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="350dp"
+            android:background="@drawable/custom_button_login"
+            android:padding="10dp"
+            android:text="Register"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/txt_link_login"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="405dp"
+            android:gravity="center"
+            android:text="Already a member? Login"
+            android:textColor="#080808"
+            android:textSize="16dip" />
+    </RelativeLayout>
+
+</RelativeLayout>

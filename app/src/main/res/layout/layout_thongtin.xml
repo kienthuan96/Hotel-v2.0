@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:gravity="center"
+        android:textSize="40dp"
+        android:text="Ten Khach San"
+        android:id="@+id/txtTenKS"
+        android:layout_width="match_parent "
+        android:layout_height="50dp" />
+    <TextView
+        android:gravity="right"
+        android:text="Giá tiền"
+        android:id="@+id/txtGiaKS"
+        android:layout_below="@+id/txtTenKS"
+        android:layout_width="match_parent "
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="Dia Chi"
+        android:id="@+id/txtDiaChiKS"
+        android:layout_below="@+id/txtGiaKS"
+        android:layout_width="match_parent "
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="SDT"
+        android:id="@+id/txtSDTKS"
+        android:layout_below="@+id/txtDiaChiKS"
+        android:layout_width="match_parent "
+        android:layout_height="wrap_content" />
+    <RatingBar
+        android:id="@+id/rbKS"
+        android:layout_below="@+id/txtSDTKS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/txtService"
+        android:layout_below="@+id/rbKS"
+        android:text="Service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/imgWifi"
+        android:src="@drawable/ic_wifi_black_24dp"
+        android:layout_below="@id/txtService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/imgPet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtService"
+        android:layout_toEndOf="@+id/imgWifi"
+        android:src="@drawable/ic_pets_black_24dp" />
+    <ImageView
+        android:id="@+id/imgRestaurant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtService"
+        android:layout_toEndOf="@+id/imgPet"
+        android:src="@drawable/ic_restaurant_black_24dp" />
+    <ImageView
+        android:id="@+id/imgBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtService"
+        android:layout_toEndOf="@+id/imgRestaurant"
+        android:src="@drawable/ic_local_bar_black_24dp" />
+    <ImageView
+        android:id="@+id/imgSwimmingPool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtService"
+        android:layout_toEndOf="@+id/imgBar"
+        android:src="@drawable/ic_pool_black_24dp" />
+</RelativeLayout>
