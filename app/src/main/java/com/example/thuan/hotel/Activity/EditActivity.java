@@ -1,4 +1,4 @@
-package com.example.thuan.hotel;
+package com.example.thuan.hotel.Activity;
 
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -15,18 +15,16 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.thuan.hotel.Activity.PostActivity;
 import com.example.thuan.hotel.Model.Hotel;
 import com.example.thuan.hotel.Model.Service;
+import com.example.thuan.hotel.R;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

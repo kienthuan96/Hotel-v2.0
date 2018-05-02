@@ -42,7 +42,7 @@
         <activity android:name=".Activity.OrderActivity" />
 
         <activity android:name=".DeleteActivity" />
-        <activity android:name=".EditActivity"></activity>
+        <activity android:name=".Activity.EditActivity"></activity>
         <activity android:name=".Activity.ListOderActivity"></activity>
         <activity android:name=".Activity.GoogleMapActivity"></activity>
 

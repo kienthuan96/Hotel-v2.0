@@ -92,4 +92,18 @@
         android:layout_marginEnd="56dp"
         android:text="GoogleMap" />
 
+    <com.spark.submitbutton.SubmitButton
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="19dp"
+        android:text="Submit"
+        android:textColor="@color/gray"
+        app:sub_btn_background="@color/white"
+        app:sub_btn_duration="3000"
+        app:sub_btn_line_color="#4CAF50"
+        app:sub_btn_ripple_color="#4CAF50"
+        app:sub_btn_tick_color="@color/white" />
+
 </RelativeLayout>
