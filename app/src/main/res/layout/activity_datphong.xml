@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/favorite"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,15 +16,22 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Họ và tên:"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:textColor="#1a1b1b"
+            />
 
         <EditText
             android:id="@+id/txtHoTen"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/oval" />
+            android:background="@drawable/fillcolor"
+            />
     </LinearLayout>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="vertical">
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -33,12 +42,17 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Nhận phòng:"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:textColor="#1a1b1b"
+            />
 
         <EditText
             android:id="@+id/in_time"
             android:layout_width="200dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"
+            android:editable="false"
+            android:background="@drawable/fillcolor"
+            />
 
         <ImageButton
             android:id="@+id/btn_time"
@@ -50,7 +64,11 @@
 
 
     </LinearLayout>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="vertical">
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -61,12 +79,16 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Trả phòng:"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:textColor="#1a1b1b"
+            />
 
         <EditText
             android:id="@+id/in_date"
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:editable="false"
+            android:background="@drawable/fillcolor"
             />
 
         <ImageButton
@@ -79,7 +101,11 @@
             android:text="" />
 
     </LinearLayout>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="vertical">
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -90,15 +116,23 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Email:"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:textColor="#1a1b1b"
+            />
 
         <EditText
             android:id="@+id/txtEmail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/oval" />
+            android:background="@drawable/fillcolor"
+            android:hint="example@gmail.com"
+            />
     </LinearLayout>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="vertical">
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -109,15 +143,22 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Điện thoại:"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:textColor="#1a1b1b"
+            />
 
         <EditText
             android:id="@+id/txtDienThoai"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/oval" />
+            android:background="@drawable/fillcolor"
+            />
     </LinearLayout>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="vertical">
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -127,16 +168,27 @@
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:gravity="center"
+
             android:text="Giá tiền:"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:textColor="#1a1b1b"
+            />
 
         <EditText
             android:id="@+id/txtGiaTien"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/oval" />
-    </LinearLayout>
+            android:editable="false"
+            android:textColor="#ff9b0f"
+            android:background="@drawable/fillcolor"
 
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="vertical">
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -147,42 +199,60 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Số phòng:"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:textColor="#1a1b1b"
+            />
 
         <EditText
             android:id="@+id/txtSoPhong"
             android:layout_width="50dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:editable="false"
+            android:textColor="#0f3fff"
+            android:background="@drawable/fillcolor"
 
-        <Button
+            />
+
+        <ImageButton
 
             android:id="@+id/btn_up"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@null"
             android:gravity="center"
-            android:text="Up" />
+            android:src="@drawable/upload"
+            android:text=""
 
-        <Button
+            />
+
+        <ImageButton
 
             android:id="@+id/btn_down"
-            android:layout_width="70dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Down" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="vertical">
-
+            android:text=""
+            android:src="@drawable/download"
+            android:background="@null"
+            android:layout_gravity="center"
+            />
         <Button
 
             android:id="@+id/btn_datphong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Đặt phòng" />
+            android:layout_gravity="center"
+            android:text="Đặt phòng"
+
+            android:textColor="@color/colorTextColorWhite"
+
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="vertical">
     </LinearLayout>
 
 </LinearLayout>

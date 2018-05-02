@@ -89,6 +89,8 @@ public class LoginActivity extends AppCompatActivity {
                                         Bundle bundle=new Bundle();
                                         bundle.putString("id",user.getUid());
                                         intent.putExtra("goi",bundle);
+
+
                                         startActivity(intent);
                                     } else {
                                         Toast.makeText(LoginActivity.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();

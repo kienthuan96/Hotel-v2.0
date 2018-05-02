@@ -22,6 +22,8 @@ import android.widget.Toast;
 
 import com.example.thuan.hotel.Model.Hotel;
 import com.example.thuan.hotel.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,15 +43,27 @@ import java.util.regex.Pattern;
 
 public class OrderActivity extends AppCompatActivity implements
         View.OnClickListener {
-    ImageButton btnDatePicker, btnTimePicker;
-    Button btnDat,btnUp,btnDown;
+    ImageButton btnDatePicker, btnTimePicker,btnUp,btnDown;
+    Button btnDat;
     EditText txtDate, txtTime,txtHoTen,txtEmail,txtSDT,txtSophong,txtGiaTien;
     private int mYear, mMonth, mDay, mHour, mMinute;
     public static DatabaseReference def;
     public static DatabaseReference Mydef;
-    private void getPrice(final  int day,final int room)
+    private FirebaseAuth mAuth;
+
+    String  id_user = "";
+    String  id_hotel = "";
+    private void Leona()
     {
-        txtGiaTien = (EditText)findViewById(R.id.txtGiaTien);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getBundleExtra("goi1");
+         id_user =  bundle.getString("id1");
+        Bundle bundle1 = intent.getBundleExtra("goi");
+        id_hotel =  bundle1.getString("id");
+    }
+
+    private void setOder(final  String manguoidung,final  String makhachsan)
+    {
         def = FirebaseDatabase.getInstance().getReference("hotel");
         def.addValueEventListener(new ValueEventListener() {
             @Override
@@ -57,39 +71,64 @@ public class OrderActivity extends AppCompatActivity implements
                 for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                     HashMap t = (HashMap) childSnapshot.getValue();
 
-                    String key = t.get("id").toString();
 
-
-                    if(key.equals("-LAqUFdTyh6UXVtnASG9"))
+                    if(manguoidung.equals(t.get("id_user").toString()))
                     {
-                        float price_hotel = Float.parseFloat(t.get("price").toString());
-                        float tong = (price_hotel*(float)day)*(float)room;
-                        txtGiaTien.setText(tong+"");
-                        Log.v("GIATIEN1",String.valueOf(price_hotel));
+                        String key = t.get("id").toString();
+                        if(makhachsan.equals(key));
+                        {
+                            Toast.makeText(OrderActivity.this, "Bạn không thể đặt khách sạn của mình", Toast.LENGTH_LONG).show();
+
+
+                         // Toast.makeText(OrderActivity.this, id_user + id_hotel, Toast.LENGTH_LONG).show();
+
+                            return;
+                        }
                     }
 
-
-
                 }
-
-
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
             }
+        });
+    }
+    private void getPrice(final  int day,final int room)
+    {
+
+        txtGiaTien = (EditText)findViewById(R.id.txtGiaTien);
+        def = FirebaseDatabase.getInstance().getReference("hotel");
+        def.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                        HashMap t = (HashMap) childSnapshot.getValue();
+
+                        String key = t.get("id").toString();
+                        if(key.equals(id_hotel))
+                        {
+                            float price_hotel = Float.parseFloat(t.get("price").toString());
+                            float tong = (price_hotel*(float)day)*(float)room;
+                            txtGiaTien.setText(tong+"");
+                            Log.v("GIATIEN1",String.valueOf(price_hotel));
+                        }
+
+                    }
+                }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         });
-
-
     }
     private void getTimeInEditText()
     {
         btnDatePicker=(ImageButton)findViewById(R.id.btn_date);
         btnTimePicker=(ImageButton)findViewById(R.id.btn_time);
-        btnUp = (Button)findViewById(R.id.btn_up);
-        btnDown = (Button)findViewById(R.id.btn_down);
+        btnUp = (ImageButton) findViewById(R.id.btn_up);
+        btnDown = (ImageButton) findViewById(R.id.btn_down);
         txtDate=(EditText)findViewById(R.id.in_date);
         txtTime=(EditText)findViewById(R.id.in_time);
 
@@ -170,12 +209,41 @@ public class OrderActivity extends AppCompatActivity implements
 
             }
         });
+        txtTime.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                try {
+                    String ngaybatdau = txtTime.getText().toString();
+                    String ngayketthuc = txtDate.getText().toString();
+                    int sophong = Integer.parseInt(txtSophong.getText().toString());
+                    Date datebatdau =new SimpleDateFormat("dd/MM/yyyy").parse(ngaybatdau);
+                    Date dateketthuc =new SimpleDateFormat("dd/MM/yyyy").parse(ngayketthuc);
+                    long a = (dateketthuc.getTime() - datebatdau.getTime())/86400000;
+                    Log.v("songay1",String.valueOf(a));
+                    getPrice((int) a,sophong);
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
+
     int a =1;
     private void setUp()
     {
 
-        btnUp = (Button)findViewById(R.id.btn_up);
+        btnUp = (ImageButton) findViewById(R.id.btn_up);
 
         btnUp.setOnClickListener(v -> {
 
@@ -190,7 +258,7 @@ public class OrderActivity extends AppCompatActivity implements
     private void setDown()
     {
 
-        btnDown = (Button)findViewById(R.id.btn_down);
+        btnDown = (ImageButton)findViewById(R.id.btn_down);
 
         btnDown.setOnClickListener(v -> {
 
@@ -208,6 +276,8 @@ public class OrderActivity extends AppCompatActivity implements
         btnDat = (Button)findViewById(R.id.btn_datphong);
 
         btnDat.setOnClickListener(v -> {
+            mAuth = FirebaseAuth.getInstance();
+            FirebaseUser user = mAuth.getCurrentUser();
             String HoTen = txtHoTen.getText().toString();
             String ngaynhanphong = txtTime.getText().toString();
             String ngaytraphong = txtDate.getText().toString();
@@ -251,7 +321,7 @@ public class OrderActivity extends AppCompatActivity implements
                         GMailSender sender = new GMailSender("thanghoang064@gmail.com", "eotzmfeyuycgblmi");
                         sender.sendMail("Xác nhận đặt phòng thành công",
                                 "Cảm ơn bạn đã đặt phòng từ ngày "+ngaynhanphong +" tới ngày " +ngaytraphong +". Với giá tiền" +giatien
-                                +". Khách sạn sẽ liên hệ lại với bạn chúc bạn có 1 kì nghỉ vui vẻ ở khách sạn"
+                                        +". Khách sạn sẽ liên hệ lại với bạn chúc bạn có 1 kì nghỉ vui vẻ ở khách sạn"
                                 ,
                                 email,
                                 email);
@@ -264,7 +334,8 @@ public class OrderActivity extends AppCompatActivity implements
             String temp=    Mydef.push().getKey();
             HashMap<String, String> t = new HashMap<>();
             t.put("TotalMoney", String.valueOf(giatien));
-            t.put("hotel_id", "LAmx-7ZT1PtZSoYTX0O");
+            t.put("hotel_id", id_hotel);
+            t.put("user_order_id",user.getUid());
             t.put("name", HoTen);
             t.put("RoomOrder", String.valueOf(Sophong));
             t.put("Phone", dienthoai);
@@ -280,6 +351,12 @@ public class OrderActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datphong);
+        getSupportActionBar().setTitle("Dat phong");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      //  String mauser="4FyLeXHjvHUVm7VDuzXPR1ZRLki2",maks ="-LAqUFdTyh6UXVtnASG9";
+
+        Leona();
+      //      setOder( mauser, maks);
         getTimeInEditText();
         setUp();
         Dathang();
@@ -320,55 +397,55 @@ public class OrderActivity extends AppCompatActivity implements
 
             // Get Current Date
             try {
-            final Calendar c = Calendar.getInstance();
-            mYear = c.get(Calendar.YEAR);
-            mMonth = c.get(Calendar.MONTH);
-            mDay = c.get(Calendar.DAY_OF_MONTH);
-            String ngaybatdau = txtDate.getText().toString();
-            Log.v("FGH",ngaybatdau);
-            Date day =new SimpleDateFormat("dd/MM/yyyy").parse(ngaybatdau);
-            String days =new SimpleDateFormat("dd").format(day);
-            String months =new SimpleDateFormat("MM").format(day);
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
+                String ngaybatdau = txtDate.getText().toString();
+                Log.v("FGH",ngaybatdau);
+                Date day =new SimpleDateFormat("dd/MM/yyyy").parse(ngaybatdau);
+                String days =new SimpleDateFormat("dd").format(day);
+                String months =new SimpleDateFormat("MM").format(day);
                 Log.v("FGH1",months+"");
-            String years =new SimpleDateFormat("yyyy").format(day);
-            int getdays = Integer.parseInt(days);
-            int getMonths = Integer.parseInt(months);
-            int getYears = Integer.parseInt(years);
-            c.add(Calendar.DATE, 1);
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                    new DatePickerDialog.OnDateSetListener() {
+                String years =new SimpleDateFormat("yyyy").format(day);
+                int getdays = Integer.parseInt(days);
+                int getMonths = Integer.parseInt(months);
+                int getYears = Integer.parseInt(years);
+                c.add(Calendar.DATE, 1);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                        new DatePickerDialog.OnDateSetListener() {
 
-                        @Override
-                        public void onDateSet(DatePicker view, int year,
-                                              int monthOfYear, int dayOfMonth) {
-                            try {
-                            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                            Date ch = Calendar.getInstance().getTime();
-                            String formattedDate1234 = formatter.format(ch);
-                                Date dateReal = formatter.parse(formattedDate1234);
-                                String sDate1=dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
-                                Date dateset=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
-                                Date datetomorrow =  addDays(dateReal, 1);
-                                String formattedDatetomorrow = formatter.format(datetomorrow);
-                             /*  */
-                             //
-                                if(datetomorrow.after(dateset)==true)
-                                {
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                try {
+                                    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                                    Date ch = Calendar.getInstance().getTime();
+                                    String formattedDate1234 = formatter.format(ch);
+                                    Date dateReal = formatter.parse(formattedDate1234);
+                                    String sDate1=dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+                                    Date dateset=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
+                                    Date datetomorrow =  addDays(dateReal, 1);
+                                    String formattedDatetomorrow = formatter.format(datetomorrow);
+                                    /*  */
+                                    //
+                                    if(datetomorrow.after(dateset)==true)
+                                    {
 
-                                    txtDate.setText(formattedDatetomorrow);
+                                        txtDate.setText(formattedDatetomorrow);
+                                    }
+                                    else {
+                                        txtDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                    }
+
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
                                 }
-                                else {
-                                    txtDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-                                }
 
-                            } catch (ParseException e) {
-                                e.printStackTrace();
+
                             }
-
-
-                        }
-                    }, getYears, getMonths-1, getdays);
-            datePickerDialog.show();
+                        }, getYears, getMonths-1, getdays);
+                datePickerDialog.show();
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -384,39 +461,69 @@ public class OrderActivity extends AppCompatActivity implements
             mYear = c.get(Calendar.YEAR);
             mMonth = c.get(Calendar.MONTH);
             mDay = c.get(Calendar.DAY_OF_MONTH);
+            String ngaykethhuc = txtTime.getText().toString();
+            try {
+                Date day = new SimpleDateFormat("dd/MM/yyyy").parse(ngaykethhuc);
+                String days = new SimpleDateFormat("dd").format(day);
+                String months = new SimpleDateFormat("MM").format(day);
+                Log.v("FGH1", months + "");
+                String years = new SimpleDateFormat("yyyy").format(day);
+                int getdays = Integer.parseInt(days);
+                int getMonths = Integer.parseInt(months);
+                int getYears = Integer.parseInt(years);
 
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                    new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                        new DatePickerDialog.OnDateSetListener() {
 
-                        @Override
-                        public void onDateSet(DatePicker view, int year,
-                                              int monthOfYear, int dayOfMonth) {
-                            try {
-                                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                                Date ch = Calendar.getInstance().getTime();
-                                String formattedDate1234 = formatter.format(ch);
-                                Date dateReal = formatter.parse(formattedDate1234);
-                                String sDate1=dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
-                                Date dateset=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
-                                Date datetomorrow =  addDays(dateReal, 1);
-                                String formattedDatetomorrow = formatter.format(datetomorrow);
-                                /*  */
-                                //
-                                if(datetomorrow.after(dateset)==true)
-                                {
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                try {
+                                    SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                                    Date ch = Calendar.getInstance().getTime();
+                                    String formattedDate1234 = formatter.format(ch);
+                                    Date dateReal = formatter.parse(formattedDate1234);
+                                    String sDate1 = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+                                    Date dateset = new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
+                                    Date datetomorrow = addDays(dateReal, 1);
+                                    String formattedDatetomorrow = formatter.format(datetomorrow);
+                                    //ngaybatdao
+                                    String ngayketthuc = txtDate.getText().toString();
+                                    Log.v("FGH1", ngayketthuc);
+                                    Date day = new SimpleDateFormat("dd/MM/yyyy").parse(ngayketthuc);
+                                    /*  */
+                                    //
+                                    String ngaybatdau = txtTime.getText().toString();
+                                    if (dateReal.after(dateset) == true) {
 
-                                    txtTime.setText(formattedDatetomorrow);
+                                        txtTime.setText(formattedDate1234);
+                                    } else if (dateset.after(day) == true) {
+                                        txtTime.setText(ngaybatdau);
+                                    } else {
+
+                                        txtTime.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                    }
+                              /*
+                                //ngaybatdao
+
+                                Log.v("FGH2", ngaybatdau);
+                                Date daybatdau = new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
+                                if (day.after(daybatdau) == true) {
+                                    txtTime.setText(ngaybatdau + "ùyghjk");
+                                }*/
+
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
                                 }
-                                else {
-                                    txtTime.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
-                                }
-
-                            } catch (ParseException e) {
-                                e.printStackTrace();
                             }
-                        }
-                    }, mYear, mMonth, mDay);
-            datePickerDialog.show();
+                        }, getYears, getMonths-1, getdays);
+
+                datePickerDialog.show();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+
         }
     }
     public static Date addDays(Date date, int days) {

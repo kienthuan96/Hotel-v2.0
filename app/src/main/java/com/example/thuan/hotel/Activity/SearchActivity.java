@@ -512,6 +512,7 @@ float max,min;
                 Intent intent=new Intent(SearchActivity.this,DetaiHotelActivity.class);
                 Bundle bundle=new Bundle();
                 bundle.putString("id",mKhachSanList.get(i).getId().toString());
+
                 intent.putExtra("goi",bundle);
                 startActivity(intent);
             }

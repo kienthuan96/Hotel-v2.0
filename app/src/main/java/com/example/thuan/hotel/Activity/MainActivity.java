@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnLogin, btnRegister, btnPost, btnList, btnSearch, btnFavorite,btnDetail,btnDatPhong, btnDelete,btnDanhsachdat, btnGoogleMap;
+    Button btnLogin, btnRegister, btnPost, btnList, btnSearch, btnFavorite,btnDetail,btnDatPhong, btnDelete,btnDanhsachdat, btnGoogleMap,btnDanhsachdatuser;
     FirebaseUser user;
     Context context;
     public static final int REQUEST_CODE_REGISTER = 1;
@@ -35,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
     }
     private void danhsachdath() {
         Intent intent = new Intent(MainActivity.this, ListOderActivity.class);
+        startActivity(intent);
+    }
+    private void danhsachdatuser() {
+        Intent intent = new Intent(MainActivity.this, ListOrderUserHotelActivity.class);
         startActivity(intent);
     }
     private void search() {
@@ -95,10 +99,17 @@ public class MainActivity extends AppCompatActivity {
         btnGoogleMap = findViewById(R.id.btnGoogleMap);
         btnDatPhong = findViewById(R.id.btnDatPhong);
         btnDanhsachdat = findViewById(R.id.btnDanhsachdat);
+        btnDanhsachdatuser = findViewById(R.id.btnDanhsachdatuser);
         btnDanhsachdat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 danhsachdath();
+            }
+        });
+        btnDanhsachdatuser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                danhsachdatuser();
             }
         });
         btnDatPhong.setOnClickListener(new View.OnClickListener() {
