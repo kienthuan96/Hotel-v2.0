@@ -72,7 +72,6 @@ public class GoogleMapActivity extends AppCompatActivity implements GoogleMap.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acitivity_googlemap);
 
-        button = (Button) findViewById(R.id.btnClick);
         Intent intent=getIntent();
         Bundle bundle=intent.getBundleExtra("goi");
         address=bundle.getString("address");
@@ -84,21 +83,9 @@ public class GoogleMapActivity extends AppCompatActivity implements GoogleMap.On
             buildAlertMessageNoGps();
         }
         else {
-
             SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.map);
             mapFragment.getMapAsync(GoogleMapActivity.this);
-
-            button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    LatLng abc = getLocationFromAddress(GoogleMapActivity.this, address);
-                    String origin = String.valueOf("" + mLastLocation.getLatitude() + "," + mLastLocation.getLongitude() + "");
-                    String destination = String.valueOf("" + abc.latitude + "," + abc.longitude + "");
-
-                    sendRequest(origin, destination);
-                }
-            });
         }
     }
 
@@ -111,7 +98,10 @@ public class GoogleMapActivity extends AppCompatActivity implements GoogleMap.On
                         if (task.isSuccessful() && task.getResult() != null) {
                             mLastLocation = task.getResult();
 //                            sp.setLocationUser(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-
+                            LatLng abc = getLocationFromAddress(GoogleMapActivity.this, address);
+                            String origin = String.valueOf("" + mLastLocation.getLatitude() + "," + mLastLocation.getLongitude() + "");
+                            String destination = String.valueOf("" + abc.latitude + "," + abc.longitude + "");
+                            sendRequest(origin, destination);
                             Log.e("Latitude ", mLastLocation.getLatitude() +" ::: "+ mLastLocation.getLongitude());
 
                             //startActivity(new Intent(GoogleMapActivity.this, MainActivity.class));
@@ -132,13 +122,6 @@ public class GoogleMapActivity extends AppCompatActivity implements GoogleMap.On
         } else {
             getLastLocation();
         }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-            getLastLocation();
-
     }
 
     private boolean checkPermissions() {
