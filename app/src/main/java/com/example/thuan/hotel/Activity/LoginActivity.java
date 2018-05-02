@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.spark.submitbutton.SubmitButton;
 
 public class LoginActivity extends AppCompatActivity {
     public String getEmail;
@@ -30,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseUser user;
     EditText edtEmail, edtPassword;
     TextView txtRegister;
-    Button btnLogin;
+    SubmitButton btnLogin;
     Animation aniLogin;
     ImageView imgAvatar;
 
@@ -48,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
     public void anhXa() {
         edtEmail = (EditText) findViewById(R.id.edtEmail);
         edtPassword = (EditText) findViewById(R.id.edtPassword);
-        btnLogin = (Button) findViewById(R.id.btn_login);
+        btnLogin = (SubmitButton) findViewById(R.id.btn_login);
         txtRegister=findViewById(R.id.txt_link_register);
         imgAvatar=findViewById(R.id.imgAvatar);
         aniLogin= AnimationUtils.loadAnimation(this,R.anim.login);
