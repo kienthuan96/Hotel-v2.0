@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".Activity.LoginActivity"
     android:focusable="true"
     android:background="@drawable/favorite"
     android:focusableInTouchMode="true"
     android:padding="10dp">
+
     <ImageView
         android:background="@drawable/custom_imageview_login"
         android:src="@drawable/ic_person_black_24dp"
@@ -16,8 +20,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-         />
-
+        />
     <RelativeLayout
         android:layout_width="374dp"
         android:layout_height="394dp"
@@ -75,17 +78,19 @@
             android:inputType="textPassword"
             />
 
-        <android.support.v7.widget.AppCompatButton
-            android:background="@drawable/custom_button_login"
-            android:textColor="#212121"
+        <com.spark.submitbutton.SubmitButton
             android:id="@+id/btn_login"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="270dp"
-            android:layout_marginBottom="24dp"
-            android:padding="12dp"
-            android:textSize="22sp"
-            android:text="Login"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@+id/txt_link_register"
+            android:layout_centerHorizontal="true"
+            android:text="Login"
+            android:textColor="@color/gray"
+            app:sub_btn_background="@color/white"
+            app:sub_btn_duration="800"
+            app:sub_btn_line_color="#FFFF8D"
+            app:sub_btn_ripple_color="#FFFF8D"
+            app:sub_btn_tick_color="@color/white" />
 
         <TextView
             android:textColor="#0d0d0d"
@@ -99,5 +104,6 @@
             android:gravity="center"
             android:textSize="16dip"/>
     </RelativeLayout>
+
 
 </RelativeLayout>
