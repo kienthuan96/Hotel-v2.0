@@ -53,6 +53,7 @@ public class OrderActivity extends AppCompatActivity implements
 
     String  id_user = "";
     String  id_hotel = "";
+
     private void Leona()
     {
         Intent intent = getIntent();
@@ -60,6 +61,7 @@ public class OrderActivity extends AppCompatActivity implements
          id_user =  bundle.getString("id1");
         Bundle bundle1 = intent.getBundleExtra("goi");
         id_hotel =  bundle1.getString("id");
+
     }
 
     private void setOder(final  String manguoidung,final  String makhachsan)
@@ -75,16 +77,19 @@ public class OrderActivity extends AppCompatActivity implements
                     if(manguoidung.equals(t.get("id_user").toString()))
                     {
                         String key = t.get("id").toString();
+                        Toast.makeText(OrderActivity.this, "Bạn không thể đặt khách sạn của mình1"+makhachsan, Toast.LENGTH_LONG).show();
+                        Toast.makeText(OrderActivity.this, "Bạn không thể đặt khách sạn của mình2"+key, Toast.LENGTH_LONG).show();
                         if(makhachsan.equals(key));
                         {
                             Toast.makeText(OrderActivity.this, "Bạn không thể đặt khách sạn của mình", Toast.LENGTH_LONG).show();
-
+                            btnDat.setEnabled(false);
 
                          // Toast.makeText(OrderActivity.this, id_user + id_hotel, Toast.LENGTH_LONG).show();
 
-                            return;
+
                         }
                     }
+
 
                 }
             }
@@ -93,6 +98,10 @@ public class OrderActivity extends AppCompatActivity implements
 
             }
         });
+    }
+    private void  concac(String ma)
+    {
+
     }
     private void getPrice(final  int day,final int room)
     {
@@ -243,6 +252,7 @@ public class OrderActivity extends AppCompatActivity implements
     private void setUp()
     {
 
+
         btnUp = (ImageButton) findViewById(R.id.btn_up);
 
         btnUp.setOnClickListener(v -> {
@@ -250,6 +260,7 @@ public class OrderActivity extends AppCompatActivity implements
 
 
             Log.d("adfsd", "HHH");
+
             txtSophong.setText(a+"");
 
             a++;
@@ -266,8 +277,17 @@ public class OrderActivity extends AppCompatActivity implements
 
             Log.d("adfsd", "HHH");
             txtSophong.setText(a+"");
+           int k = Integer.parseInt(txtSophong.getText().toString());
+            Toast.makeText(OrderActivity.this, "Bạn "+k, Toast.LENGTH_LONG).show();
+
 
             a--;
+            if(k<=1)
+            {
+                a=1;
+            }
+
+
         });
     }
     private void Dathang()
@@ -343,7 +363,7 @@ public class OrderActivity extends AppCompatActivity implements
             t.put("DateStarOrder", ngaynhanphong);
             t.put("DateEndOrder", ngaytraphong);
             Mydef.child(temp).setValue(t);
-
+            Toast.makeText(this, "Đặt phòng thành công", Toast.LENGTH_LONG).show();
 
         });
     }
@@ -356,7 +376,9 @@ public class OrderActivity extends AppCompatActivity implements
       //  String mauser="4FyLeXHjvHUVm7VDuzXPR1ZRLki2",maks ="-LAqUFdTyh6UXVtnASG9";
 
         Leona();
+       // Toast.makeText(this, concac, Toast.LENGTH_LONG).show();
       //      setOder( mauser, maks);
+//   setOder(id_user,id_hotel);
         getTimeInEditText();
         setUp();
         Dathang();
@@ -370,7 +392,7 @@ public class OrderActivity extends AppCompatActivity implements
         txtGiaTien =(EditText)findViewById(R.id.txtGiaTien);
         String ngaybatdau = txtTime.getText().toString();
         String ngayketthuc = txtDate.getText().toString();
-        txtSophong.setText("1");
+       txtSophong.setText(a+"");
         try {
             Date datebatdau =new SimpleDateFormat("dd/MM/yyyy").parse(ngaybatdau);
             Date dateketthuc =new SimpleDateFormat("dd/MM/yyyy").parse(ngayketthuc);
