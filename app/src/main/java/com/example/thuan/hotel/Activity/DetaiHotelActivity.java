@@ -85,6 +85,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import br.com.bloder.magic.view.MagicButton;
+
 public class DetaiHotelActivity extends AppCompatActivity{
     private FirebaseAuth mAuth;
     final String DATABASE_NAME = "database.sqlite";
@@ -113,7 +115,7 @@ public class DetaiHotelActivity extends AppCompatActivity{
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     Hotel hotel;
     RatingBar ratingBar;
-    FloatingActionButton clickFavorite;
+    MagicButton clickFavorite;
     ArrayList<String> arrayListHinhAnh;
     ListView lstHinhAnh;
     Animation aniName;
@@ -165,12 +167,12 @@ public class DetaiHotelActivity extends AppCompatActivity{
         load();
         readData_BinhLuan();
         //Toast.makeText(DetaiHotelActivity.this,"Load",Toast.LENGTH_SHORT).show();
-        clickFavorite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addEventFavorite();
-            }
-        });
+//        clickFavorite.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                addEventFavorite();
+//            }
+//        });
 
         // Bat su kien cho nut Button Them va Thoat
 
@@ -249,6 +251,7 @@ public class DetaiHotelActivity extends AppCompatActivity{
         txtGiaKS=findViewById(R.id.txtGiaKS);
         img=findViewById(R.id.imgHotel);
         ratingBar=findViewById(R.id.rbKS);
+        ratingBar.setEnabled(false);
         clickFavorite=findViewById(R.id.clickFavorite);
         imgWifi=findViewById(R.id.imgWifi);
         imgPet=findViewById(R.id.imgPet);

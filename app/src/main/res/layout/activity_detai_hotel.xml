@@ -8,22 +8,30 @@
     android:layout_height="match_parent"
     tools:context=".Activity.DetaiHotelActivity">
 
-
-    <android.support.design.widget.FloatingActionButton
+    <br.com.bloder.magic.view.MagicButton
         android:id="@+id/clickFavorite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:clickable="true"
-        app:srcCompat="@drawable/ic_favorite_border_black_24dp" />
+        android:layout_alignParentStart="true"
+        app:button_icon="@drawable/ic_favorite_border_black_24dp"
+        app:button_icon_height="25dp"
+        app:button_icon_width="25dp"
+        app:hide_text="Favorite"
+        app:hide_text_color="@color/white"
+        app:hide_text_size="8dp"
+        app:magic_button_size="50dp">
+    </br.com.bloder.magic.view.MagicButton>
 
-        <!--<ImageView-->
-            <!--android:id="@+id/imgHotel"-->
-            <!--android:src="@drawable/ic_hotel_black_24dp"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent" />-->
-    <!--</RelativeLayout>-->
+    <!--<android.support.design.widget.FloatingActionButton-->
+    <!--android:id="@+id/clickFavorite"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:layout_alignParentEnd="true"-->
+    <!--android:clickable="true"-->
+    <!--app:srcCompat="@drawable/ic_favorite_border_black_24dp" />-->
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,6 +49,8 @@
                 android:orientation="vertical">
 
                 <TabWidget
+
+                    android:backgroundTint="#3F51B5"
                     android:id="@android:id/tabs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -79,6 +89,6 @@
                 </FrameLayout>
             </LinearLayout>
 
-</TabHost>
+        </TabHost>
     </LinearLayout>
 </RelativeLayout>
