@@ -19,8 +19,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 
 public class MainActivity extends AppCompatActivity {
+    Button btnLogin, btnRegister, btnPost, btnList, btnSearch, btnFavorite,btnDetail,btnDatPhong, btnDelete,btnDanhsachdat, btnGoogleMap,btnDanhsachdatuser, btnGhiChu;
 
-    Button btnLogin, btnRegister, btnPost, btnList, btnSearch, btnFavorite,btnDetail,btnDatPhong, btnDelete,btnDanhsachdat, btnGoogleMap,btnDanhsachdatuser;
     FirebaseUser user;
     Context context;
     public static final int REQUEST_CODE_REGISTER = 1;
@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         user = FirebaseAuth.getInstance().getCurrentUser();
         anhXa();
+
 
     }
     private void danhsachdath() {
@@ -87,6 +88,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, GoogleMapActivity.class);
         startActivity(intent);
     }
+    private void ghiChu(){
+        Intent intent = new Intent(MainActivity.this, MenuGhiChuActivity.class);
+        startActivity(intent);
+    }
+
 
     private void anhXa() {
         btnLogin =  findViewById(R.id.btnLogin);
@@ -99,6 +105,17 @@ public class MainActivity extends AppCompatActivity {
         btnGoogleMap = findViewById(R.id.btnGoogleMap);
         btnDatPhong = findViewById(R.id.btnDatPhong);
         btnDanhsachdat = findViewById(R.id.btnDanhsachdat);
+
+
+        btnGhiChu = (Button) findViewById(R.id.btnGhiChu);
+        btnGhiChu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ghiChu();
+            }
+        });
+
+
         btnDanhsachdatuser = findViewById(R.id.btnDanhsachdatuser);
         btnDanhsachdat.setOnClickListener(new View.OnClickListener() {
             @Override
