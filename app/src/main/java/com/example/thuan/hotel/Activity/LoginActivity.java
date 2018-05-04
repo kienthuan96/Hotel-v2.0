@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseUser user;
     EditText edtEmail, edtPassword;
     TextView txtRegister;
-//    Button btnLogin;
+
     Animation aniLogin;
     ImageView imgAvatar;
     SubmitButton btnLogin;

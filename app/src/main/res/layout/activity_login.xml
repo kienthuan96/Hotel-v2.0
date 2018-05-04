@@ -87,9 +87,9 @@
             android:text="Login"
             android:textColor="@color/gray"
             app:sub_btn_background="@color/white"
-            app:sub_btn_duration="800"
-            app:sub_btn_line_color="#4CAF50"
-            app:sub_btn_ripple_color="#4CAF50"
+            app:sub_btn_duration="900"
+            app:sub_btn_line_color="#0277BD"
+            app:sub_btn_ripple_color="#0277BD"
             app:sub_btn_tick_color="@color/white" />
 
         <TextView

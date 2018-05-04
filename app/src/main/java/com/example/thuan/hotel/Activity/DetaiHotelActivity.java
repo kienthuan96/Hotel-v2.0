@@ -84,6 +84,9 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.bloder.magic.Magic;
+import br.com.bloder.magic.view.MagicButton;
+
 public class DetaiHotelActivity extends AppCompatActivity{
     private FirebaseAuth mAuth;
     final String DATABASE_NAME = "database.sqlite";
@@ -112,7 +115,8 @@ public class DetaiHotelActivity extends AppCompatActivity{
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     Hotel hotel;
     RatingBar ratingBar;
-    FloatingActionButton clickFavorite;
+    MagicButton clickFavorite;
+//    FloatingActionButton clickFavorite;
     ArrayList<String> arrayListHinhAnh;
     ListView lstHinhAnh;
     Animation aniName;
@@ -159,13 +163,12 @@ public class DetaiHotelActivity extends AppCompatActivity{
         tabHost.addTab(tab3);
 
 
-
-        Toast.makeText(DetaiHotelActivity.this,"Thanh Cong",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(DetaiHotelActivity.this,"Thanh Cong",Toast.LENGTH_SHORT).show();
 
         load();
         readData_BinhLuan();
         //Toast.makeText(DetaiHotelActivity.this,"Load",Toast.LENGTH_SHORT).show();
-        clickFavorite.setOnClickListener(new View.OnClickListener() {
+        clickFavorite.setMagicButtonClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addEventFavorite();

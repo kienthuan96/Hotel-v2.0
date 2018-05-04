@@ -47,5 +47,8 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:12.0.0'
 
     implementation 'me.spark:submitbutton:1.0.1'
+    implementation 'com.github.bloder:magic:1.1'
+    implementation 'yasic.library.ParticleTextView:particletextview:0.0.5'
+    implementation 'com.github.imangazalievm:circlemenu:2.0.1'
 }
 apply plugin: 'com.google.gms.google-services'

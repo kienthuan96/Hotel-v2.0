@@ -7,11 +7,18 @@ import android.os.Bundle;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.thuan.hotel.DeleteActivity;
 import com.example.thuan.hotel.R;
+import com.example.thuan.hotel.SplashActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.yasic.library.particletextview.MovingStrategy.RandomMovingStrategy;
+import com.yasic.library.particletextview.Object.ParticleTextViewConfig;
+import com.yasic.library.particletextview.View.ParticleTextView;
+
+import br.com.bloder.magic.view.MagicButton;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -19,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnLogin, btnRegister, btnPost, btnList, btnSearch, btnFavorite,btnDetail,btnDatPhong, btnDelete,btnDanhsachdat, btnGoogleMap;
     FirebaseUser user;
     Context context;
+    MagicButton magicButton;
+    ParticleTextView particleTextView;
     public static final int REQUEST_CODE_REGISTER = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,18 +88,34 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, GoogleMapActivity.class);
         startActivity(intent);
     }
+    private  void particleTextView(){
+        ParticleTextViewConfig config=new ParticleTextViewConfig.Builder()
+                .setRowStep(7)
+                .setColumnStep(7)
+                .setTargetText("Kien Thuan")
+                .setReleasing(0.2)
+                .setParticleRadius(4)
+                .setMiniDistance(0.1)
+                .setTextSize(120)
+                .setMovingStrategy(new RandomMovingStrategy())
+                .instance();
+        particleTextView.setConfig(config);
+        particleTextView.startAnimation();
+    }
 
     private void anhXa() {
         btnLogin =  findViewById(R.id.btnLogin);
-        btnRegister =  findViewById(R.id.btnRegister);
+//        btnRegister =  findViewById(R.id.btnRegister);
         btnPost=findViewById(R.id.btnPost);
         btnList=findViewById(R.id.btnList);
-        btnDetail=findViewById(R.id.btnDetail);
-        btnFavorite = findViewById(R.id.btnFavorite);
+        btnDetail=findViewById(R.id.btnSplash);
+//        btnFavorite = findViewById(R.id.btnFavorite);
         btnSearch = findViewById(R.id.btnSearch);
         btnGoogleMap = findViewById(R.id.btnGoogleMap);
         btnDatPhong = findViewById(R.id.btnDatPhong);
         btnDanhsachdat = findViewById(R.id.btnDanhsachdat);
+        magicButton=findViewById(R.id.mbtnMagic);
+        particleTextView=findViewById(R.id.particleTextView);
         btnDanhsachdat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,12 +138,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                register();
-            }
-        });
+//        btnRegister.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                register();
+//            }
+//        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,24 +159,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                list();
-            }
-        });
+//        btnList.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                list();
+//            }
+//        });
 
-        btnFavorite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                favorite();
-            }
-        });
+//        btnFavorite.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                favorite();
+//            }
+//        });
 
         btnDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                detail();
+//                detail();
+                Intent intent=new Intent(MainActivity.this, SplashActivity.class);
+                startActivity(intent);
             }
         });
         btnDelete.setOnClickListener(new View.OnClickListener() {
@@ -165,6 +192,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 googleMap();
+            }
+        });
+        magicButton.setMagicButtonClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "Magic", Toast.LENGTH_SHORT).show();
             }
         });
     }
