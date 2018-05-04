@@ -22,8 +22,8 @@ import br.com.bloder.magic.view.MagicButton;
 
 
 public class MainActivity extends AppCompatActivity {
+    Button btnLogin, btnRegister, btnPost, btnList, btnSearch, btnFavorite,btnDetail,btnDatPhong, btnDelete,btnDanhsachdat, btnGoogleMap,btnDanhsachdatuser, btnGhiChu;
 
-    Button btnLogin, btnRegister, btnPost, btnList, btnSearch, btnFavorite,btnDetail,btnDatPhong, btnDelete,btnDanhsachdat, btnGoogleMap,btnDanhsachdatuser;
     FirebaseUser user;
     Context context;
     MagicButton magicButton;
@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         user = FirebaseAuth.getInstance().getCurrentUser();
         anhXa();
+
 
     }
     private void danhsachdath() {
@@ -92,20 +93,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, GoogleMapActivity.class);
         startActivity(intent);
     }
-    private  void particleTextView(){
-        ParticleTextViewConfig config=new ParticleTextViewConfig.Builder()
-                .setRowStep(7)
-                .setColumnStep(7)
-                .setTargetText("Kien Thuan")
-                .setReleasing(0.2)
-                .setParticleRadius(4)
-                .setMiniDistance(0.1)
-                .setTextSize(120)
-                .setMovingStrategy(new RandomMovingStrategy())
-                .instance();
-        particleTextView.setConfig(config);
-        particleTextView.startAnimation();
+
+    private void ghiChu(){
+        Intent intent = new Intent(MainActivity.this, MenuGhiChuActivity.class);
+        startActivity(intent);
     }
+
 
     private void anhXa() {
         btnLogin =  findViewById(R.id.btnLogin);
@@ -120,6 +113,18 @@ public class MainActivity extends AppCompatActivity {
         btnDanhsachdat = findViewById(R.id.btnDanhsachdat);
         magicButton=findViewById(R.id.mbtnMagic);
         particleTextView=findViewById(R.id.particleTextView);
+
+
+
+        btnGhiChu = (Button) findViewById(R.id.btnGhiChu);
+        btnGhiChu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ghiChu();
+            }
+        });
+
+
 
         btnDanhsachdatuser = findViewById(R.id.btnDanhsachdatuser);
         btnDanhsachdat.setOnClickListener(new View.OnClickListener() {
