@@ -160,6 +160,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/rbSao"
                 android:layout_gravity="center"
+                android:stepSize="1.0"
                 />
         </LinearLayout>
 

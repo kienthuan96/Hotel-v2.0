@@ -23,7 +23,7 @@ import br.com.bloder.magic.view.MagicButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnLogin, btnRegister, btnPost, btnList, btnSearch, btnFavorite,btnDetail,btnDatPhong, btnDelete,btnDanhsachdat, btnGoogleMap;
+    Button btnLogin, btnRegister, btnPost, btnList, btnSearch, btnFavorite,btnDetail,btnDatPhong, btnDelete,btnDanhsachdat, btnGoogleMap,btnDanhsachdatuser;
     FirebaseUser user;
     Context context;
     MagicButton magicButton;
@@ -40,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
     }
     private void danhsachdath() {
         Intent intent = new Intent(MainActivity.this, ListOderActivity.class);
+        startActivity(intent);
+    }
+    private void danhsachdatuser() {
+        Intent intent = new Intent(MainActivity.this, ListOrderUserHotelActivity.class);
         startActivity(intent);
     }
     private void search() {
@@ -116,10 +120,18 @@ public class MainActivity extends AppCompatActivity {
         btnDanhsachdat = findViewById(R.id.btnDanhsachdat);
         magicButton=findViewById(R.id.mbtnMagic);
         particleTextView=findViewById(R.id.particleTextView);
+
+        btnDanhsachdatuser = findViewById(R.id.btnDanhsachdatuser);
         btnDanhsachdat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 danhsachdath();
+            }
+        });
+        btnDanhsachdatuser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                danhsachdatuser();
             }
         });
         btnDatPhong.setOnClickListener(new View.OnClickListener() {

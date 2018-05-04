@@ -45,6 +45,7 @@
         <activity android:name=".Activity.EditActivity"></activity>
         <activity android:name=".Activity.ListOderActivity"></activity>
         <activity android:name=".Activity.GoogleMapActivity"></activity>
+        <activity android:name=".Activity.ListOrderUserHotelActivity"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

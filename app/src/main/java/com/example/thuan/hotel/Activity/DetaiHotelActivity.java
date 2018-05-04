@@ -82,6 +82,7 @@ import com.squareup.picasso.Picasso;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import br.com.bloder.magic.Magic;
@@ -163,7 +164,6 @@ public class DetaiHotelActivity extends AppCompatActivity{
         tabHost.addTab(tab3);
 
 
-//        Toast.makeText(DetaiHotelActivity.this,"Thanh Cong",Toast.LENGTH_SHORT).show();
 
         load();
         readData_BinhLuan();
@@ -231,7 +231,7 @@ public class DetaiHotelActivity extends AppCompatActivity{
                 arrayListHinhAnh.add(hotel.getImg1());
                 arrayListHinhAnh.add(hotel.getImg2());
                 arrayListHinhAnh.add(hotel.getImg3());
-                Toast.makeText(DetaiHotelActivity.this, "So luong hinh: "+arrayListHinhAnh.get(2),Toast.LENGTH_SHORT).show();
+                //Toast.makeText(DetaiHotelActivity.this, "So luong hinh: "+arrayListHinhAnh.get(2),Toast.LENGTH_SHORT).show();
                 Adapter_Image_Hotel adapter_image_hotel=new Adapter_Image_Hotel(DetaiHotelActivity.this,R.layout.layout_item_image,arrayListHinhAnh);
                 lstHinhAnh.setAdapter(adapter_image_hotel);
                 adapter_image_hotel.notifyDataSetChanged();
@@ -252,6 +252,7 @@ public class DetaiHotelActivity extends AppCompatActivity{
         txtGiaKS=findViewById(R.id.txtGiaKS);
         img=findViewById(R.id.imgHotel);
         ratingBar=findViewById(R.id.rbKS);
+        ratingBar.setEnabled(false);
         clickFavorite=findViewById(R.id.clickFavorite);
         imgWifi=findViewById(R.id.imgWifi);
         imgPet=findViewById(R.id.imgPet);
@@ -266,6 +267,12 @@ public class DetaiHotelActivity extends AppCompatActivity{
     private void addEventFavorite() {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
+
+        if(user == null) {
+            Intent intent = new Intent(DetaiHotelActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }
+
         ContentValues contentValues = new ContentValues();
         contentValues.put("user_id", user.getUid());
         contentValues.put("hotel_id", id_hotel);
@@ -345,17 +352,86 @@ public class DetaiHotelActivity extends AppCompatActivity{
         inflater.inflate(R.menu.menu_detail, menu);
         return true;
     }
+    public static DatabaseReference def;
+    Button btnDat;
 
+    private void setOder(final  String manguoidung,final  String makhachsan)
+    {
+        def = FirebaseDatabase.getInstance().getReference("hotel");
+        def.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int flag =0;
+                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                    HashMap t = (HashMap) childSnapshot.getValue();
+
+
+                    if(manguoidung.equals(t.get("id_user").toString()))
+                    {
+                     String key = t.get("id").toString();
+                       // Toast.makeText(DetaiHotelActivity.this, makhachsan+"mks", Toast.LENGTH_LONG).show();
+                        if(makhachsan.equals(key))
+                        {
+                            Toast.makeText(DetaiHotelActivity.this, "Bạn không thể đặt khách sạn của mình", Toast.LENGTH_LONG).show();
+                       //     Intent intent=new Intent(DetaiHotelActivity.this,DetaiHotelActivity.class);
+                          flag=1;  //Intent intent=new Intent(DetaiHotelActivity.this,OrderActivity.class);
+                            //Bundle bundle5=new Bundle();
+                            //bundle5.putString("id45","1");
+                            //intent.putExtra("goi45",bundle5);
+                            //      Toast.makeText(DetaiHotelActivity.this,user.getUid(),Toast.LENGTH_LONG).show();
+                      //      startActivity(intent);
+
+                                return;
+                            //Toast.makeText(OrderActivity.this, id_user + id_hotel, Toast.LENGTH_LONG).show();
+
+                        }
+
+
+                    }
+
+
+
+
+                }
+                Toast.makeText(DetaiHotelActivity.this, flag+"", Toast.LENGTH_LONG).show();
+                if(flag!=1)
+                {
+                    Bundle bundle1=new Bundle();
+                    Bundle bundle3=new Bundle();
+                    mAuth = FirebaseAuth.getInstance();
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    Intent intent=new Intent(DetaiHotelActivity.this,OrderActivity.class);
+                    bundle1.putString("id1",user.getUid());
+                    intent.putExtra("goi1",bundle1);
+                    bundle3.putString("id",hotel.getId());
+                    intent.putExtra("goi",bundle3);
+                    //      Toast.makeText(DetaiHotelActivity.this,user.getUid(),Toast.LENGTH_LONG).show();
+                    startActivity(intent);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.menuBook:
-//                Intent intent=new Intent(ListHotelActivity.this,PostActivity.class);
-//                Bundle bundle1=new Bundle();
-//                bundle1.putString("id",id_user);
-//                intent.putExtra("goi",bundle1);
-//                startActivity(intent);
+                String mauser="4FyLeXHjvHUVm7VDuzXPR1ZRLki2",maks ="-LAqUFdTyh6UXVtnASG9";
+                mAuth = FirebaseAuth.getInstance();
+                FirebaseUser user = mAuth.getCurrentUser();
+               /* if(user == null) {
+                    Intent intent = new Intent(DetaiHotelActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }*/
+                setOder(user.getUid(),hotel.getId());
+
+             //   Intent intent=new Intent(DetaiHotelActivity.this,OrderActivity.class);
+
+
                 return true;
             case R.id.menuMap:
                 Intent intent2=new Intent(DetaiHotelActivity.this,GoogleMapActivity.class);

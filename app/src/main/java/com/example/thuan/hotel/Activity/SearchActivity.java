@@ -202,7 +202,7 @@ public class SearchActivity extends AppCompatActivity {
                     if (stars_hotel>=Star) {
 
                         Log.v("YourValue,", "Map value is:" + t.toString());
-                        mKhachSanList.add(new Hotel(t.get("name").toString(), t.get("address").toString(),
+                        mKhachSanList.add(new Hotel(t.get("id").toString(),t.get("name").toString(), t.get("address").toString(),
                                 Float.parseFloat(t.get("price").toString()), t.get("img1").toString(),
                                 Integer.parseInt(t.get("stars").toString()),
                                 Integer.parseInt(t.get("rate").toString())));
@@ -397,10 +397,11 @@ float max,min;
         test1 = (TextView)findViewById(R.id.test);
         rbSao = (RatingBar)findViewById(R.id.rbSao);
         testSao = (TextView)findViewById(R.id.testSao);
+        rbSao.setMax(5);
         rbSao.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                testSao.setText("NANA"+rating);
+                testSao.setText(""+rating);
                 seachStar(rating);
             }
         });
@@ -500,6 +501,7 @@ float max,min;
                 Intent intent=new Intent(SearchActivity.this,DetaiHotelActivity.class);
                 Bundle bundle=new Bundle();
                 bundle.putString("id",mKhachSanList.get(i).getId().toString());
+
                 intent.putExtra("goi",bundle);
                 startActivity(intent);
             }
