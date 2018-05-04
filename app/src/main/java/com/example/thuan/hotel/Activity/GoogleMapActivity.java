@@ -24,7 +24,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.thuan.hotel.BuildConfig;
-import com.example.thuan.hotel.Manifest;
+//import com.example.thuan.hotel.Manifest;
 import com.example.thuan.hotel.Model.DirectionFinder;
 import com.example.thuan.hotel.Model.DirectionFinderListener;
 import com.example.thuan.hotel.Model.Route;
