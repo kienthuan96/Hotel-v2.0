@@ -79,10 +79,11 @@ public class GoogleMapActivity extends AppCompatActivity implements GoogleMap.On
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {//chua co dich vu dinh vi
             buildAlertMessageNoGps();
         }
         else {
+
             SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.map);
             mapFragment.getMapAsync(GoogleMapActivity.this);
@@ -113,6 +114,7 @@ public class GoogleMapActivity extends AppCompatActivity implements GoogleMap.On
                 });
     }
 
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -124,6 +126,14 @@ public class GoogleMapActivity extends AppCompatActivity implements GoogleMap.On
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+            SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.map);
+            mapFragment.getMapAsync(GoogleMapActivity.this);
+        getLastLocation();
+    }
     private boolean checkPermissions() {
         int permissionState = ActivityCompat.checkSelfPermission(this,
                 android.Manifest.permission.ACCESS_COARSE_LOCATION);
@@ -284,7 +294,9 @@ public class GoogleMapActivity extends AppCompatActivity implements GoogleMap.On
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(final DialogInterface dialog, final int id) {
+
                         startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
