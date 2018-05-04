@@ -44,6 +44,10 @@
         <activity android:name=".DeleteActivity" />
         <activity android:name=".EditActivity"></activity>
         <activity android:name=".Activity.ListOderActivity"></activity>
+        <activity android:name=".Activity.MenuGhiChuActivity"></activity>
+        <activity android:name=".Activity.DanhSachGhiChu_Activity"></activity>
+        <activity android:name=".Activity.SuaGhiChu_Activity"></activity>
+        <activity android:name=".Activity.ThemGhiChu_Activity"></activity>
         <activity android:name=".Activity.GoogleMapActivity"></activity>
         <activity android:name=".Activity.ListOrderUserHotelActivity"></activity>
 
