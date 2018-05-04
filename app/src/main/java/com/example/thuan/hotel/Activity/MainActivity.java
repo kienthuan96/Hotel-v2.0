@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void post(){
-        Intent intent = new Intent(MainActivity.this, PostActivity.class);
+        Intent intent = new Intent(MainActivity.this, DeleteActivity.class);
         startActivity(intent);
     }
 

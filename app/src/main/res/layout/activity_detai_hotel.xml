@@ -23,14 +23,7 @@
         app:magic_button_size="50dp">
     </br.com.bloder.magic.view.MagicButton>
 
-    <!--<android.support.design.widget.FloatingActionButton-->
-        <!--android:id="@+id/clickFavorite"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:clickable="true"-->
-        <!--app:srcCompat="@drawable/ic_favorite_border_black_24dp" />-->
+
 
 
     <LinearLayout
@@ -49,6 +42,8 @@
                 android:orientation="vertical">
 
                 <TabWidget
+
+                    android:backgroundTint="#3F51B5"
                     android:id="@android:id/tabs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -87,6 +82,6 @@
                 </FrameLayout>
             </LinearLayout>
 
-</TabHost>
+        </TabHost>
     </LinearLayout>
 </RelativeLayout>

@@ -86,6 +86,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import br.com.bloder.magic.Magic;
+
 import br.com.bloder.magic.view.MagicButton;
 
 public class DetaiHotelActivity extends AppCompatActivity{
@@ -117,7 +118,6 @@ public class DetaiHotelActivity extends AppCompatActivity{
     Hotel hotel;
     RatingBar ratingBar;
     MagicButton clickFavorite;
-//    FloatingActionButton clickFavorite;
     ArrayList<String> arrayListHinhAnh;
     ListView lstHinhAnh;
     Animation aniName;
@@ -174,6 +174,7 @@ public class DetaiHotelActivity extends AppCompatActivity{
                 addEventFavorite();
             }
         });
+
 
         // Bat su kien cho nut Button Them va Thoat
 
