@@ -1,6 +1,7 @@
 package com.example.thuan.hotel.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -10,6 +11,7 @@ import com.example.thuan.hotel.Model.Oder;
 import com.example.thuan.hotel.Model.OrderUser;
 import com.example.thuan.hotel.R;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class Adapter_OderUser_Hotel extends BaseAdapter {
@@ -39,19 +41,22 @@ public class Adapter_OderUser_Hotel extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         View v = View.inflate(mContext, R.layout.listoderuser,null);
-        TextView tvTenKhacSan = (TextView)v.findViewById(R.id.txtTKS);
-        TextView tvDiaChi = (TextView)v.findViewById(R.id.txtdiaC);
-        TextView tvDateStarOder = (TextView)v.findViewById(R.id.txtNgayD);
-        TextView tvDateEndOder = (TextView)v.findViewById(R.id.txtNgayT);
-        TextView RoomOder = (TextView)v.findViewById(R.id.txtsoPhongD);
-        TextView Totalmoney = (TextView)v.findViewById(R.id.txttongT);
+        TextView tvTenKhacSan = v.findViewById(R.id.txtTKS);
+        TextView tvDiaChi = v.findViewById(R.id.txtdiaC);
+        TextView tvDateStarOder = v.findViewById(R.id.txtNgayD);
+        TextView tvDateEndOder = v.findViewById(R.id.txtNgayT);
+        TextView RoomOder = v.findViewById(R.id.txtsoPhongD);
+        TextView Totalmoney = v.findViewById(R.id.txttongT);
 
         tvTenKhacSan.setText(mOrderuslist.get(i).getNamehotel());
+        //tvTenKhacSan.setText("123");
+        //Log.d("KhachSan", mOrderuslist.get(i).getNamehotel());
         tvDiaChi.setText(mOrderuslist.get(i).getAddressHotel());
         tvDateStarOder.setText(mOrderuslist.get(i).getDateStartOrder());
         tvDateEndOder.setText(mOrderuslist.get(i).getDateEndOrder());
-        RoomOder.setText(mOrderuslist.get(i).getRoomOrder()+"");
-        Totalmoney.setText(mOrderuslist.get(i).getTotalMoney()+"");
+        RoomOder.setText(mOrderuslist.get(i).getRoomOrder()+" phòng");
+        DecimalFormat df = new DecimalFormat("###,###,###");
+        Totalmoney.setText(df.format(mOrderuslist.get(i).getTotalMoney()) + " VND");
 
         return v;
 
