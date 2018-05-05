@@ -7,11 +7,28 @@
         android:id="@+id/menuPost"
         android:icon="@drawable/ic_add_black_24dp"
         ></item>
+
     <item
         android:title="Post"
         app:showAsAction="always"
         android:id="@+id/menuFavorite"
         android:icon="@drawable/ic_favorite_border_black_24dp"
+        ></item>
+    <item
+        android:title="Danh sach đặt"
+        app:showAsAction="ifRoom"
+        android:id="@+id/menuDSDat"
+        ></item>
+    <item
+        android:title="Nhật kí đặt phòng"
+        app:showAsAction="ifRoom"
+        android:id="@+id/menuNhatKi"
+        ></item>
+    <item
+        android:title="Search"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:id="@+id/menuSearch"
         ></item>
 
 </menu>

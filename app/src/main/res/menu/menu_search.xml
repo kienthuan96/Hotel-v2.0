@@ -7,4 +7,10 @@
         android:icon="@drawable/ic_person_black_24dp"
         android:id="@+id/menuLogin"
         ></item>
+    <item
+        android:title="Ghi chú"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_note_black_24dp"
+        android:id="@+id/menuNote"
+        ></item>
 </menu>

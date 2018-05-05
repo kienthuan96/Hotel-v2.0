@@ -1,26 +1,11 @@
 package com.example.thuan.hotel.Activity;
 
-import android.app.Dialog;
 import android.content.ContentValues;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationManager;
-import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -32,7 +17,6 @@ import android.widget.AdapterView;
 
 import android.widget.Button;
 
-import android.widget.HeaderViewListAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
@@ -40,33 +24,14 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.thuan.hotel.Adapter.Adapter_BinhLuan;
 import com.example.thuan.hotel.Adapter.Adapter_Image_Hotel;
 import com.example.thuan.hotel.Helper.Database;
 import com.example.thuan.hotel.Model.BinhLuan;
-import com.example.thuan.hotel.Model.DirectionFinder;
-import com.example.thuan.hotel.Model.DirectionFinderListener;
 import com.example.thuan.hotel.Model.Hotel;
-import com.example.thuan.hotel.Model.Route;
 import com.example.thuan.hotel.Model.Service;
-import com.example.thuan.hotel.Program;
+import com.example.thuan.hotel.Model.Program;
 import com.example.thuan.hotel.R;
-import com.firebase.ui.storage.images.FirebaseImageLoader;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polyline;
-import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -75,17 +40,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-
-import br.com.bloder.magic.Magic;
 
 import br.com.bloder.magic.view.MagicButton;
 
@@ -441,6 +398,7 @@ public class DetaiHotelActivity extends AppCompatActivity{
                 intent2.putExtra("goi",bundle2);
                 startActivity(intent2);
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

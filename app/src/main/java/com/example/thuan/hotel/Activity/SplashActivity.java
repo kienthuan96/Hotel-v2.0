@@ -1,12 +1,11 @@
-package com.example.thuan.hotel;
+package com.example.thuan.hotel.Activity;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.animation.Animation;
 
-import com.example.thuan.hotel.Activity.SearchActivity;
+import com.example.thuan.hotel.R;
 import com.yasic.library.particletextview.MovingStrategy.RandomMovingStrategy;
 import com.yasic.library.particletextview.Object.ParticleTextViewConfig;
 import com.yasic.library.particletextview.View.ParticleTextView;

@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/relative"
     tools:context=".DeleteActivity">
 
-    <com.wrapp.floatlabelededittext.FloatLabeledEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+   <ImageView
+       android:transitionName="hinhanh"
+       android:id="@+id/imgVD"
+       android:src="@drawable/favorite"
+       android:layout_width="200dp"
+       android:layout_height="200dp" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="This is the hint" />
-    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+    <Button
+        android:id="@+id/btnChuyen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="151dp"
+        android:layout_marginStart="66dp"
+        android:text="Nhấn" />
 
     <!--&lt;!&ndash; add some padding &ndash;&gt;-->
     <!--<com.wrapp.floatlabelededittext.FloatLabeledEditText-->
@@ -56,4 +64,4 @@
     <!--</com.wrapp.floatlabelededittext.FloatLabeledEditText>-->
 
 
-</LinearLayout>
+</RelativeLayout>

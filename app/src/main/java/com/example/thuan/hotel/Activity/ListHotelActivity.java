@@ -2,6 +2,7 @@ package com.example.thuan.hotel.Activity;
 
 
 import android.content.DialogInterface;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.widget.ListView;
 import com.example.thuan.hotel.Adapter.Adapter_Hotel;
 import com.example.thuan.hotel.Model.Hotel;
 import com.example.thuan.hotel.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,6 +35,8 @@ public class ListHotelActivity extends AppCompatActivity {
     Adapter_Hotel adapter_hotel;
     DatabaseReference myRef;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
+    FloatingActionButton btnSignOut;
+    FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +86,7 @@ public class ListHotelActivity extends AppCompatActivity {
     }
 
     private void id(){
+        btnSignOut=findViewById(R.id.btnSignOut);
         lstHotel=findViewById(R.id.lstHotel);
         arrayList=new ArrayList<>();
         adapter_hotel=new Adapter_Hotel(ListHotelActivity.this,R.layout.layout_item_hotel,arrayList);
@@ -124,12 +129,35 @@ public class ListHotelActivity extends AppCompatActivity {
                 intent2.putExtra("goi",bundle2);
                 startActivity(intent2);
                 return true;
+            case R.id.menuDSDat:
+                Intent intent3=new Intent(ListHotelActivity.this,ListOderActivity.class);
+                startActivity(intent3);
+                return true;
+            case R.id.menuNhatKi:
+                Intent intent4=new Intent(ListHotelActivity.this,ListOrderUserHotelActivity.class);
+                startActivity(intent4);
+                return true;
+            case R.id.menuSearch:
+                Intent intent5=new Intent(ListHotelActivity.this,SearchActivity.class);
+                startActivity(intent5);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
     public void event(){
+        btnSignOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                auth = FirebaseAuth.getInstance();
+                auth.signOut();
+                Intent intent=new Intent(ListHotelActivity.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         lstHotel.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {

@@ -2,6 +2,7 @@ package com.example.thuan.hotel.Activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.wifi.WifiManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -11,11 +12,8 @@ import android.widget.Toast;
 
 import com.example.thuan.hotel.DeleteActivity;
 import com.example.thuan.hotel.R;
-import com.example.thuan.hotel.SplashActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.yasic.library.particletextview.MovingStrategy.RandomMovingStrategy;
-import com.yasic.library.particletextview.Object.ParticleTextViewConfig;
 import com.yasic.library.particletextview.View.ParticleTextView;
 
 import br.com.bloder.magic.view.MagicButton;

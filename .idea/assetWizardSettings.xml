@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/maps/ic_local_phone_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/editor/ic_wrap_text_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,12 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_local_phone_black_24dp" />
-<<<<<<< HEAD
+                            <entry key="outputName" value="ic_wrap_text_black_24dp" />
                             <entry key="sourceFile" value="C:\Users\Thuan" />
-=======
-                            <entry key="sourceFile" value="C:\Users\Loi" />
->>>>>>> aaba8c0b00b3b0568da8b7986073f2ae373f2dff
                           </map>
                         </option>
                       </PersistentState>

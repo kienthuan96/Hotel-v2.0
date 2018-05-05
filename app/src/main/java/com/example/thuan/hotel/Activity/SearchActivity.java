@@ -74,6 +74,10 @@ public class SearchActivity extends AppCompatActivity {
                 Intent intent=new Intent(SearchActivity.this,LoginActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.menuNote:
+                Intent intent1=new Intent(SearchActivity.this,MenuGhiChuActivity.class);
+                startActivity(intent1);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

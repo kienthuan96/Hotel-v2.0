@@ -1,12 +1,18 @@
 package com.example.thuan.hotel;
 
+import android.app.ActivityOptions;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.example.thuan.hotel.Activity.ListHotelActivity;
 import com.example.thuan.hotel.Adapter.Adapter_Hotel;
@@ -26,10 +32,14 @@ public class DeleteActivity extends AppCompatActivity {
 //    Adapter_Hotel adapter_hotel;
 //    FirebaseDatabase database = FirebaseDatabase.getInstance();
 //    DatabaseReference myRef;
+    RelativeLayout relativeLayout;
+    ImageView img;
+    Button btnChuyen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete);
+
 //        id();
 //        id_user="4FyLeXHjvHUVm7VDuzXPR1ZRLki2";
 //
@@ -37,6 +47,19 @@ public class DeleteActivity extends AppCompatActivity {
 //
 //        readData();
 //        event();
+        relativeLayout=findViewById(R.id.relative);
+        img=findViewById(R.id.imgVD);
+        btnChuyen=findViewById(R.id.btnChuyen);
+        btnChuyen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(DeleteActivity.this,Delete_1Activity.class);
+                Pair[] pairs=new Pair[1];
+                pairs[0]=new Pair<View,String>(img,"hinhanh");
+                ActivityOptions activityOptions=ActivityOptions.makeSceneTransitionAnimation(DeleteActivity.this,pairs);
+                startActivity(intent,activityOptions.toBundle());
+            }
+        });
 
     }
 //    private void readData(){
