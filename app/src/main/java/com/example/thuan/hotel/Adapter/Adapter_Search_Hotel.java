@@ -15,6 +15,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class Adapter_Search_Hotel extends BaseAdapter {
@@ -52,7 +53,8 @@ public class Adapter_Search_Hotel extends BaseAdapter {
         RatingBar rbDanhGia = (RatingBar)v.findViewById(R.id.rbXepHang);
         tvTenKhachSan.setText(mKhachSanList.get(i).getName());
         tvDiaChi.setText(String.valueOf(mKhachSanList.get(i).getAddress()));
-        tvGiaTien.setText(String.valueOf(mKhachSanList.get(i).getPrice()));
+        DecimalFormat df = new DecimalFormat("###,###,###");
+        tvGiaTien.setText(df.format(mKhachSanList.get(i).getPrice()) + " VND");
         //  Imview.setImageResource(R.drawable.khachsan);
         Log.d("nana",String.valueOf(R.drawable.khachsan));
         rbDanhGia.setNumStars(5);

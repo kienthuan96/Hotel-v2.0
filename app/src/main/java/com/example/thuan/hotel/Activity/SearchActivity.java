@@ -2,10 +2,16 @@ package com.example.thuan.hotel.Activity;
 import com.crystal.crystalrangeseekbar.widgets.CrystalSeekbar;
 import com.example.thuan.hotel.R;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -18,6 +24,7 @@ import android.widget.RatingBar;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.support.design.widget.NavigationView;
+import android.widget.Toast;
 
 import com.example.thuan.hotel.Adapter.Adapter_Search_Hotel;
 import com.example.thuan.hotel.Model.Hotel;
@@ -28,6 +35,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -321,7 +329,8 @@ float max,min;
                 }
                 barseach.setMaxValue((int)max);
                 barseach.setMinValue((int)min);
-                test1.setText(""+min);
+                DecimalFormat df = new DecimalFormat("###,###,###");
+                test1.setText(""+ min);
 //                CrystalRangeSeekbar.setMax((int) max+(int) min);
 //                if(Build.VERSION.SDK_INT > Build.VERSION_CODES.N){
 //                    barseach.setMin((int)min);
@@ -394,14 +403,28 @@ float max,min;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-
+        if (isConnected() == false) {
+            AlertDialog.Builder alertDialog=new AlertDialog.Builder(this);
+            alertDialog.setTitle("Thông báo")
+                    .setMessage("Bạn chưa kết nối mạng !!!")
+                    .setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            finish();
+                        }
+                    })
+                    .show();
+        } else {
+            Toast.makeText(this, "Đã kết nối mạng", Toast.LENGTH_SHORT).show();
+        }
         barseach = (CrystalSeekbar)findViewById(R.id.sbGia);
         barRate = (CrystalSeekbar)findViewById(R.id.sbDiem);
         testDiem = (TextView)findViewById(R.id.testDiem);
         test1 = (TextView)findViewById(R.id.test);
         rbSao = (RatingBar)findViewById(R.id.rbSao);
         testSao = (TextView)findViewById(R.id.testSao);
-        rbSao.setMax(5);
+        rbSao.setRating(5);
+        testSao.setText(5.0+"");
         rbSao.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
@@ -518,7 +541,12 @@ float max,min;
         return true;
     }
 
-
+    private boolean isConnected(){
+        ConnectivityManager cm=(ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo=cm.getActiveNetworkInfo();
+        if(networkInfo!=null && networkInfo.isConnectedOrConnecting())  return true;
+        return false;
+    }
 
 
 }

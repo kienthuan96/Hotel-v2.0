@@ -41,8 +41,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 
 import br.com.bloder.magic.view.MagicButton;
 
@@ -163,7 +166,8 @@ public class DetaiHotelActivity extends AppCompatActivity{
                 hotel= dataSnapshot.getValue(Hotel.class);
                 txtTenKS.setText(hotel.getName());
                 txtSDTKS.setText(hotel.getNumberPhone()+"");
-                txtGiaKS.setText(hotel.getPrice()+"");
+                DecimalFormat df = new DecimalFormat("###,###,###");
+                txtGiaKS.setText(df.format(Math.round(hotel.getPrice()))+"");
                 txtDiaChiKS.setText(hotel.getAddress());
                 ratingBar.setRating(Float.parseFloat(hotel.getStars().toString()));
 

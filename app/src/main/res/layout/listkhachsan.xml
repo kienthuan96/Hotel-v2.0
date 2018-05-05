@@ -63,6 +63,7 @@
                 android:textColor="#ff9f0f"
                 android:textSize="25dp" />
             <RatingBar
+                style="@style/RatingBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/rbXepHang"

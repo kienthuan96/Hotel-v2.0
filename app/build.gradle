@@ -51,5 +51,6 @@ dependencies {
     implementation 'yasic.library.ParticleTextView:particletextview:0.0.5'
     implementation 'com.github.imangazalievm:circlemenu:2.0.1'
     implementation 'com.wrapp.floatlabelededittext:library:0.0.6'
+    implementation 'com.amitshekhar.android:android-networking:1.0.1'
 }
 apply plugin: 'com.google.gms.google-services'

@@ -21,11 +21,10 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="90dp"
-        android:gravity="right"
+        android:gravity="left"
         android:text="Giá tiền" />
 
     <TextView
-        android:gravity="center"
         android:drawableLeft="@drawable/ic_location_on_black_24dp"
         android:id="@+id/txtDiaChiKS"
         android:layout_width="match_parent "
