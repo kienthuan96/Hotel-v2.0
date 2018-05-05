@@ -80,6 +80,18 @@ public class Adapter_Search_Hotel extends BaseAdapter {
         {
             tvDanhGia.setText("Khá");
         }
+        if(mKhachSanList.get(i).getRate()>=3&&mKhachSanList.get(i).getRate()<4)
+        {
+            tvDanhGia.setText("Trung bình khá");
+        }
+        if(mKhachSanList.get(i).getRate()>=2&&mKhachSanList.get(i).getRate()<3)
+        {
+            tvDanhGia.setText("Trung bình");
+        }
+        if(mKhachSanList.get(i).getRate()>=1&&mKhachSanList.get(i).getRate()<2)
+        {
+            tvDanhGia.setText("Kém");
+        }
       /*  Glide.with(mContext)
                 .load("https://firebasestorage.googleapis.com/v0/b/khachsanseach.appspot.com/o/KhachSan1.jpg?alt=media&token=d3e56926-a166-4b3a-b003-c35fd4b1198c")
                 .into(Imview);*/
