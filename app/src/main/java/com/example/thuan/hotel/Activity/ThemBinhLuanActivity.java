@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.thuan.hotel.Model.BinhLuan;
-import com.example.thuan.hotel.Program;
+import com.example.thuan.hotel.Model.Program;
 import com.example.thuan.hotel.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

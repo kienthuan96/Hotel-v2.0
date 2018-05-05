@@ -1,16 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/relative"
     tools:context=".DeleteActivity">
 
-    <ListView
-        android:id="@+id/lstDelete"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+   <ImageView
+       android:transitionName="hinhanh"
+       android:id="@+id/imgVD"
+       android:src="@drawable/favorite"
+       android:layout_width="200dp"
+       android:layout_height="200dp" />
 
-    </ListView>
+    <Button
+        android:id="@+id/btnChuyen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="151dp"
+        android:layout_marginStart="66dp"
+        android:text="Nhấn" />
 
-</LinearLayout>
+    <!--&lt;!&ndash; add some padding &ndash;&gt;-->
+    <!--<com.wrapp.floatlabelededittext.FloatLabeledEditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--float:fletPadding="10dp">-->
+
+        <!--<EditText-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="Username" />-->
+    <!--</com.wrapp.floatlabelededittext.FloatLabeledEditText>-->
+
+    <!--&lt;!&ndash; password input &ndash;&gt;-->
+    <!--<com.wrapp.floatlabelededittext.FloatLabeledEditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--float:fletPaddingBottom="10dp">-->
+
+        <!--<EditText-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="Password"-->
+            <!--android:inputType="textPassword" />-->
+    <!--</com.wrapp.floatlabelededittext.FloatLabeledEditText>-->
+
+    <!--&lt;!&ndash; change color of hint text&ndash;&gt;-->
+    <!--<com.wrapp.floatlabelededittext.FloatLabeledEditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--float:fletPaddingBottom="10dp"-->
+        <!--float:fletTextAppearance="@style/floatlabelededittext">-->
+
+        <!--<EditText-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="Styled Hint"-->
+            <!--android:inputType="textPassword" />-->
+    <!--</com.wrapp.floatlabelededittext.FloatLabeledEditText>-->
+
+
+</RelativeLayout>

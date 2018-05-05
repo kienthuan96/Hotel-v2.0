@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.thuan.hotel.Adapter.Adapter_Order_Hotel;
 import com.example.thuan.hotel.Model.Hotel;
@@ -42,6 +43,7 @@ public class ListOderActivity   extends AppCompatActivity {
            public void onDataChange(DataSnapshot dataSnapshot) {
                mAuth = FirebaseAuth.getInstance();
                FirebaseUser user = mAuth.getCurrentUser();
+               Toast.makeText(ListOderActivity.this, "User: "+user.getEmail(), Toast.LENGTH_SHORT).show();
                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                    HashMap t = (HashMap) childSnapshot.getValue();
                    if(user.getUid().equals(t.get("id_user"))) {

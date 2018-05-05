@@ -31,6 +31,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -119,6 +120,7 @@ public class OrderActivity extends AppCompatActivity implements
                         {
                             float price_hotel = Float.parseFloat(t.get("price").toString());
                             float tong = (price_hotel*(float)day)*(float)room;
+                            //DecimalFormat df = new DecimalFormat("###,###,###");
                             txtGiaTien.setText(tong+"");
                             Log.v("GIATIEN1",String.valueOf(price_hotel));
                         }

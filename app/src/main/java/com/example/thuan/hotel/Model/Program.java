@@ -1,4 +1,4 @@
-package com.example.thuan.hotel;
+package com.example.thuan.hotel.Model;
 
 public class Program {
     public static String getEmail ;

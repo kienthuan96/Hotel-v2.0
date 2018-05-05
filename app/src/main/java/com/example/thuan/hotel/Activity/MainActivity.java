@@ -2,8 +2,7 @@ package com.example.thuan.hotel.Activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.net.wifi.WifiManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -12,10 +11,12 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.thuan.hotel.DeleteActivity;
-import com.example.thuan.hotel.Model.Oder;
 import com.example.thuan.hotel.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.yasic.library.particletextview.View.ParticleTextView;
+
+import br.com.bloder.magic.view.MagicButton;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseUser user;
     Context context;
+    MagicButton magicButton;
+    ParticleTextView particleTextView;
     public static final int REQUEST_CODE_REGISTER = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void post(){
-        Intent intent = new Intent(MainActivity.this, PostActivity.class);
+        Intent intent = new Intent(MainActivity.this, DeleteActivity.class);
         startActivity(intent);
     }
 
@@ -88,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, GoogleMapActivity.class);
         startActivity(intent);
     }
+
     private void ghiChu(){
         Intent intent = new Intent(MainActivity.this, MenuGhiChuActivity.class);
         startActivity(intent);
@@ -96,15 +100,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void anhXa() {
         btnLogin =  findViewById(R.id.btnLogin);
-        btnRegister =  findViewById(R.id.btnRegister);
+//        btnRegister =  findViewById(R.id.btnRegister);
         btnPost=findViewById(R.id.btnPost);
         btnList=findViewById(R.id.btnList);
-        btnDetail=findViewById(R.id.btnDetail);
-        btnFavorite = findViewById(R.id.btnFavorite);
+        btnDetail=findViewById(R.id.btnSplash);
+//        btnFavorite = findViewById(R.id.btnFavorite);
         btnSearch = findViewById(R.id.btnSearch);
         btnGoogleMap = findViewById(R.id.btnGoogleMap);
         btnDatPhong = findViewById(R.id.btnDatPhong);
         btnDanhsachdat = findViewById(R.id.btnDanhsachdat);
+        magicButton=findViewById(R.id.mbtnMagic);
+        particleTextView=findViewById(R.id.particleTextView);
+
 
 
         btnGhiChu = (Button) findViewById(R.id.btnGhiChu);
@@ -114,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
                 ghiChu();
             }
         });
+
 
 
         btnDanhsachdatuser = findViewById(R.id.btnDanhsachdatuser);
@@ -145,12 +153,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                register();
-            }
-        });
+//        btnRegister.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                register();
+//            }
+//        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,24 +174,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                list();
-            }
-        });
+//        btnList.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                list();
+//            }
+//        });
 
-        btnFavorite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                favorite();
-            }
-        });
+//        btnFavorite.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                favorite();
+//            }
+//        });
 
         btnDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                detail();
+//                detail();
+                Intent intent=new Intent(MainActivity.this, SplashActivity.class);
+                startActivity(intent);
             }
         });
         btnDelete.setOnClickListener(new View.OnClickListener() {
@@ -197,6 +207,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 googleMap();
+            }
+        });
+        magicButton.setMagicButtonClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "Magic", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -31,10 +31,10 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseUser user;
     EditText edtEmail, edtPassword;
     TextView txtRegister;
-    SubmitButton btnLogin;
+
     Animation aniLogin;
     ImageView imgAvatar;
-
+    SubmitButton btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -21,6 +21,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Adapter_Hotel extends ArrayAdapter {
@@ -57,7 +58,8 @@ public class Adapter_Hotel extends ArrayAdapter {
         Log.d("URL ",pathReference.getDownloadUrl().toString());
         txtTen.setText(hotel.getName());
         txtDiaChi.setText(hotel.getAddress());
-        txtGia.setText(hotel.getPrice().toString());
+        DecimalFormat df = new DecimalFormat("###,###,###");
+        txtGia.setText(df.format(hotel.getPrice().toString()) + " VND");
         return convertView;
     }
 

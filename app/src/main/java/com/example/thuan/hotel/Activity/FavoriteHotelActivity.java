@@ -129,12 +129,12 @@ public class FavoriteHotelActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
-            String hotel_id =arrayList.get(position).getId();
-            Intent intent = new Intent(FavoriteHotelActivity.this, DetaiHotelActivity.class);
-            Bundle bundle1=new Bundle();
-            bundle1.putString("id",hotel_id);
-            intent.putExtra("goi",bundle1);
-            startActivity(intent);
+                String hotel_id =arrayList.get(position).getId();
+                Intent intent = new Intent(FavoriteHotelActivity.this, DetaiHotelActivity.class);
+                Bundle bundle1=new Bundle();
+                bundle1.putString("id",hotel_id);
+                intent.putExtra("goi",bundle1);
+                startActivity(intent);
             }
         });
 
