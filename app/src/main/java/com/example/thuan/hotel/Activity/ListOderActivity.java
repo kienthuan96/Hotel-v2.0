@@ -31,12 +31,9 @@ public class ListOderActivity   extends AppCompatActivity {
     private List<Oder> mOderList ;
     private Adapter_Order_Hotel adapter;
     ListView lvOrderHotel;
-    private List<Hotel> mKhachSanList ;
     private FirebaseAuth mAuth;
-   // TextView txtHoTen,
    private void addlisthotel()
    {
-       //     Log.v("YourValue,", "seach is:" + seachstring);
        def = FirebaseDatabase.getInstance().getReference("hotel");
        def.addValueEventListener(new ValueEventListener() {
            @Override
@@ -48,9 +45,7 @@ public class ListOderActivity   extends AppCompatActivity {
                    if(user.getUid().equals(t.get("id_user"))) {
                        SetSeach(t.get("id").toString(),t.get("name").toString(),t.get("address").toString());
                    }
-
                }
-
 
                adapter.notifyDataSetChanged();
            }
@@ -71,7 +66,6 @@ public class ListOderActivity   extends AppCompatActivity {
                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                    HashMap t = (HashMap) childSnapshot.getValue();
                     if(nana.equals(t.get("hotel_id").toString())){
-
                         mOderList.add(new Oder(NameHotel,DiaChi,t.get("name").toString(),t.get("Phone").toString(),t.get("DateStarOrder").toString(),t.get("DateEndOrder").toString(),Integer.parseInt(t.get("RoomOrder").toString()),Float.parseFloat(t.get("TotalMoney").toString())
                    ));
                }
@@ -92,19 +86,11 @@ public class ListOderActivity   extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listorder);
         mOderList = new ArrayList<>();
-        mKhachSanList = new ArrayList<>();
         adapter  = new Adapter_Order_Hotel(getApplicationContext(), mOderList);
         lvOrderHotel = findViewById(R.id.dsOrder);
         lvOrderHotel.setAdapter(adapter);
-      /*  Firebase.setAndroidContext(this);
-        if(!FirebaseApp.getApps(this).isEmpty()) {
-            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        }
-        myFB = new Firebase("https://hotel-793b0.firebaseio.com/order");
-        def = FirebaseDatabase.getInstance().getReference();*/
 
         addlisthotel();
-      //  SetSeach();
     }
 
 }

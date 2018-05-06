@@ -29,9 +29,7 @@ public class ListOrderUserHotelActivity   extends AppCompatActivity {
     private List<OrderUser> mOderusList ;
     private Adapter_OderUser_Hotel adapter;
     ListView lvOrderuserHotel;
-    private List<Hotel> mKhachSanList ;
     private FirebaseAuth mAuth;
-    // TextView txtHoTen,
     private void addlisthotel()
     {
         //     Log.v("YourValue,", "seach is:" + seachstring);
@@ -90,19 +88,11 @@ public class ListOrderUserHotelActivity   extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listuserorder);
         mOderusList = new ArrayList<>();
-        mKhachSanList = new ArrayList<>();
         adapter  = new Adapter_OderUser_Hotel(getApplicationContext(), mOderusList);
         lvOrderuserHotel = findViewById(R.id.dsOrderUser);
         lvOrderuserHotel.setAdapter(adapter);
-      /*  Firebase.setAndroidContext(this);
-        if(!FirebaseApp.getApps(this).isEmpty()) {
-            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        }
-        myFB = new Firebase("https://hotel-793b0.firebaseio.com/order");
-        def = FirebaseDatabase.getInstance().getReference();*/
 
         addlisthotel();
-        //  SetSeach();
     }
 
 }
