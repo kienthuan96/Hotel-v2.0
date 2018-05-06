@@ -63,7 +63,7 @@ public class DetaiHotelActivity extends AppCompatActivity{
     private ListView listView_Comment ;
     private Adapter_BinhLuan adapter_binhLuan;
     private ArrayList<BinhLuan> data;
-    DatabaseReference mDatabase;
+    DatabaseReference mDatabase,mDatabase1;
     DatabaseReference myRef;
   private   float tongDiem  =0 ;
     private int countBL= 0 ;
@@ -279,11 +279,11 @@ public class DetaiHotelActivity extends AppCompatActivity{
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 BinhLuan bl = dataSnapshot.getValue(BinhLuan.class);
                 tongDiem += bl.DiemBL;
-
                 data.add(bl);
                 countBL = data.size();
                 diemTBkhachSan = (float)tongDiem / countBL; // tính trung binhf cho nay
-                Toast.makeText(DetaiHotelActivity.this, "ĐIểm trung bình " + diemTBkhachSan, Toast.LENGTH_SHORT).show();
+
+//                Toast.makeText(DetaiHotelActivity.this, "ĐIểm trung bình " + diemTBkhachSan, Toast.LENGTH_SHORT).show();
              //   Toast.makeText(DetaiHotelActivity.this, "Đã load dữ liệu thành công! ", Toast.LENGTH_SHORT).show();
                 adapter_binhLuan.notifyDataSetChanged();
             }

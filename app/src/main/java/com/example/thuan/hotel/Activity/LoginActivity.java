@@ -42,10 +42,15 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
         anhXa();
-
+//        checkLogin();
         init();
     }
-
+    public void checkLogin(){
+        if(mAuth != null){
+            Intent intent=new Intent(LoginActivity.this,ListHotelActivity.class);
+            startActivity(intent);
+        }
+    }
     public void anhXa() {
         edtEmail = (EditText) findViewById(R.id.edtEmail);
         edtPassword = (EditText) findViewById(R.id.edtPassword);
