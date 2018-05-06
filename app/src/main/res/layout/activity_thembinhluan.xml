@@ -157,6 +157,7 @@
                     android:padding="10dp"
                     android:textStyle="bold"
                     android:textAlignment="center"
+                    android:inputType="number"
                     />
 
 

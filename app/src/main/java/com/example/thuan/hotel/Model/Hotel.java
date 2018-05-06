@@ -89,6 +89,19 @@ public class Hotel {
         this.price = price;
         this.img1 = img1;
     }
+    public void setHotel(Hotel hotel){
+        this.id=hotel.getId();
+        this.name=hotel.getName();
+        this.district=hotel.getDistrict();
+        this.price=hotel.getPrice();
+        this.numberPhone=hotel.getNumberPhone();
+        this.city=hotel.getCity();
+        this.address=hotel.getAddress();
+        this.img1=hotel.getImg1();
+        this.img2=hotel.getImg2();
+        this.img3=hotel.getImg3();
+        this.setService(hotel.getService());
+    }
 
     public String getId_user() {
         return id_user;

@@ -26,6 +26,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -38,11 +39,13 @@ public class ListHotelActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     FloatingActionButton btnSignOut;
     FirebaseAuth auth;
+    int viTri=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_hotel);
         myRef = database.getReference("hotel");
+//        adapter_hotel.notifyDataSetChanged();
 
 //        Intent intent=getIntent();
 //        Bundle bundle=intent.getBundleExtra("goi");
@@ -54,10 +57,10 @@ public class ListHotelActivity extends AppCompatActivity {
 
         readData();
         event();
-
     }
 
     private void readData(){
+
         myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -68,7 +71,14 @@ public class ListHotelActivity extends AppCompatActivity {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+             //   adapter_hotel.notifyDataSetChanged();
 
+                String id=dataSnapshot.getKey();
+                Hotel hotel=dataSnapshot.getValue(Hotel.class);
+                if (arrayList.get(viTri).getId().equals(id)) {
+                    arrayList.get(viTri).setHotel(hotel);
+                }
+                adapter_hotel.notifyDataSetChanged();
             }
 
             @Override
@@ -86,6 +96,20 @@ public class ListHotelActivity extends AppCompatActivity {
 
             }
         });
+
+//        myRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                Hotel hotel=dataSnapshot.getValue(Hotel.class);
+//                if(id_user.equals(hotel.getId_user()))  arrayList.add(hotel);
+//                adapter_hotel.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
     }
 
     private void id(){
@@ -165,6 +189,7 @@ public class ListHotelActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 luachon(i);
+                viTri=i;
                 return false;
             }
         });

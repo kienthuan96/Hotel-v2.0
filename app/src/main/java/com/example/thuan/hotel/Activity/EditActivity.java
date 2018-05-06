@@ -51,6 +51,7 @@ public class EditActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference storageRef = storage.getReference();
+    public static DatabaseReference def;
     String id_hotel;
     ArrayList<Integer> arrayListRate;
     Hotel hotel;
@@ -89,14 +90,14 @@ public class EditActivity extends AppCompatActivity {
                 if(service.getBar()) chkBarEdit.setChecked(true);
                 if(service.getSwimmingPool()) chkSwimmingPoolEdit.setChecked(true);
 
-                FirebaseStorage storage1 = FirebaseStorage.getInstance();
-                StorageReference storageRef1 = storage1.getReference();
-                StorageReference pathReference1 = storageRef1.child("IMG_CONTACT/"+hotel.getImg1());
-                Glide.with(EditActivity.this).using(new FirebaseImageLoader()).load(pathReference1).into(img1Edit);
-                StorageReference pathReference2 = storageRef1.child("IMG_CONTACT/"+hotel.getImg2());
-                Glide.with(EditActivity.this).using(new FirebaseImageLoader()).load(pathReference2).into(img2Edit);
-                StorageReference pathReference3 = storageRef1.child("IMG_CONTACT/"+hotel.getImg3());
-                Glide.with(EditActivity.this).using(new FirebaseImageLoader()).load(pathReference3).into(img3Edit);
+//                FirebaseStorage storage1 = FirebaseStorage.getInstance();
+//                StorageReference storageRef1 = storage1.getReference();
+//                StorageReference pathReference1 = storageRef1.child("IMG_CONTACT/"+hotel.getImg1());
+//                Glide.with(EditActivity.this).using(new FirebaseImageLoader()).load(pathReference1).into(img1Edit);
+//                StorageReference pathReference2 = storageRef1.child("IMG_CONTACT/"+hotel.getImg2());
+//                Glide.with(EditActivity.this).using(new FirebaseImageLoader()).load(pathReference2).into(img2Edit);
+//                StorageReference pathReference3 = storageRef1.child("IMG_CONTACT/"+hotel.getImg3());
+//                Glide.with(EditActivity.this).using(new FirebaseImageLoader()).load(pathReference3).into(img3Edit);
 
             }
 
@@ -170,10 +171,37 @@ public class EditActivity extends AppCompatActivity {
         hotel.setNumberPhone(Integer.parseInt(edtSDTEdit.getText().toString()));
         hotel.setPrice(Float.parseFloat(edtGiaEdit.getText().toString()));
 //        hotel.setId(temp);
+        String name=edtTenEdit.getText().toString();
+        String city=edtThanhPhoEdit.getText().toString();
+        String district=edtQuanEdit.getText().toString();
+        String address=edtDiaChiEdit.getText().toString();
+        int numbering=Integer.parseInt(edtSDTEdit.getText().toString());
+        Float gia=Float.parseFloat(edtGiaEdit.getText().toString());
 
+        def = FirebaseDatabase.getInstance().getReference("hotel");
+        def.child(id_hotel).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                try {
+                    dataSnapshot.getRef().child("name").setValue(name);
+                    dataSnapshot.getRef().child("city").setValue(city);
+                    dataSnapshot.getRef().child("district").setValue(district);
+                    dataSnapshot.getRef().child("address").setValue(address);
+                    dataSnapshot.getRef().child("numberPhone").setValue(numbering);
+                    dataSnapshot.getRef().child("price").setValue(gia);
+                }
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-        DatabaseReference myRef1=database.getReference().child(id_hotel);
-        myRef1.setValue(hotel);
+            }
+        });
+
+//        DatabaseReference myRef1=database.getReference().child(id_hotel);
+//        myRef1.setValue(hotel);
         Toast.makeText(this, "Thanh cong", Toast.LENGTH_SHORT).show();
     }
 
