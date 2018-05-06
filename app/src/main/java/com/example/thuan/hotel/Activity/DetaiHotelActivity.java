@@ -361,15 +361,17 @@ public class DetaiHotelActivity extends AppCompatActivity{
                 {
                     Bundle bundle1=new Bundle();
                     Bundle bundle3=new Bundle();
+
                     mAuth = FirebaseAuth.getInstance();
                     FirebaseUser user = mAuth.getCurrentUser();
-                    Intent intent=new Intent(DetaiHotelActivity.this,OrderActivity.class);
-                    bundle1.putString("id1",user.getUid());
-                    intent.putExtra("goi1",bundle1);
-                    bundle3.putString("id",hotel.getId());
-                    intent.putExtra("goi",bundle3);
-                    //      Toast.makeText(DetaiHotelActivity.this,user.getUid(),Toast.LENGTH_LONG).show();
-                    startActivity(intent);
+                        Intent intent = new Intent(DetaiHotelActivity.this, OrderActivity.class);
+                        bundle1.putString("id1", user.getUid());
+                        intent.putExtra("goi1", bundle1);
+                        bundle3.putString("id", hotel.getId());
+                        intent.putExtra("goi", bundle3);
+                        //      Toast.makeText(DetaiHotelActivity.this,user.getUid(),Toast.LENGTH_LONG).show();
+                        startActivity(intent);
+
                 }
             }
             @Override
@@ -386,12 +388,14 @@ public class DetaiHotelActivity extends AppCompatActivity{
                 String mauser="4FyLeXHjvHUVm7VDuzXPR1ZRLki2",maks ="-LAqUFdTyh6UXVtnASG9";
                 mAuth = FirebaseAuth.getInstance();
                 FirebaseUser user = mAuth.getCurrentUser();
-               /* if(user == null) {
+                if(user == null) {
                     Intent intent = new Intent(DetaiHotelActivity.this, LoginActivity.class);
                     startActivity(intent);
-                }*/
-                setOder(user.getUid(),hotel.getId());
-
+                    finish();
+                }
+                else {
+                    setOder(user.getUid(),hotel.getId());
+                }
              //   Intent intent=new Intent(DetaiHotelActivity.this,OrderActivity.class);
 
 
