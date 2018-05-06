@@ -54,7 +54,7 @@ public class DetaiHotelActivity extends AppCompatActivity{
     final String DATABASE_NAME = "database.sqlite";
     SQLiteDatabase databaseSQL;
     TabHost tabHost;
-        Program pr;
+    Program pr;
 
     String id_hotel="";
     //Khai bao 2 Button Them va Thoat Comment
