@@ -366,6 +366,9 @@ public class OrderActivity extends AppCompatActivity implements
             t.put("DateEndOrder", ngaytraphong);
             Mydef.child(temp).setValue(t);
             Toast.makeText(this, "Đặt phòng thành công", Toast.LENGTH_LONG).show();
+            txtHoTen.setText("");
+            txtEmail.setText("");
+            txtSDT.setText("");
 
         });
     }

@@ -58,8 +58,8 @@ public class Adapter_Hotel extends ArrayAdapter {
         Log.d("URL ",pathReference.getDownloadUrl().toString());
         txtTen.setText(hotel.getName());
         txtDiaChi.setText(hotel.getAddress());
-        DecimalFormat df = new DecimalFormat("###,###,###");
-        txtGia.setText(df.format(hotel.getPrice().toString()) + " VND");
+     //   DecimalFormat df = new DecimalFormat("###,###,###");
+        txtGia.setText(hotel.getPrice().toString()+"");
         return convertView;
     }
 
