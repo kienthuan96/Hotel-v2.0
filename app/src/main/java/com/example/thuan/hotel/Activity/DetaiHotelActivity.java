@@ -71,7 +71,7 @@ public class DetaiHotelActivity extends AppCompatActivity{
 
 
     ImageView imgWifi,imgBar,imgRestaurant,imgSwimmingPool,imgPet;
-    TextView txtTenKS,txtDiaChiKS,txtGiaKS,txtSDTKS;
+    TextView txtTenKS,txtDiaChiKS,txtGiaKS,txtSDTKS,txtRate;
     ImageView img;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -170,7 +170,7 @@ public class DetaiHotelActivity extends AppCompatActivity{
                 txtGiaKS.setText(df.format(Math.round(hotel.getPrice()))+"");
                 txtDiaChiKS.setText(hotel.getAddress());
                 ratingBar.setRating(Float.parseFloat(hotel.getStars().toString()));
-
+                txtRate.setText(hotel.getRate()+"");
                     //Nhận dữ liệu truyền qua Comment
                   Program.tenKhachSan   = hotel.getName();
                   Program.IDKhachSan= hotel.getId();
@@ -223,6 +223,7 @@ public class DetaiHotelActivity extends AppCompatActivity{
         imgSwimmingPool=findViewById(R.id.imgSwimmingPool);
         arrayListHinhAnh=new ArrayList<>();
         lstHinhAnh=findViewById(R.id.lstImage);
+        txtRate=findViewById(R.id.txtRate);
         aniName= AnimationUtils.loadAnimation(this,R.anim.name_hotel);
     }
 
