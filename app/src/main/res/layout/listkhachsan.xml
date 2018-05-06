@@ -30,7 +30,7 @@
                 android:textSize="25dp"
                 android:id="@+id/txtDanhGia"
                 android:text="danhgia"
-                android:textColor="#ff9f0f"
+                android:textColor="#ff0f2b"
                 />
         </LinearLayout>
         <LinearLayout
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="DiaChi"
-                android:textColor="#ff9f0f"
+                android:textColor="#050505"
                 android:textSize="20dp" />
             <TextView
                 android:id="@+id/txtGiaTien"
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="GiaTien"
-                android:textColor="#ff9f0f"
+                android:textColor="#0f37ff"
                 android:textSize="25dp" />
             <RatingBar
                 style="@style/RatingBar"
