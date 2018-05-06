@@ -43,11 +43,10 @@ public class ListOderActivity   extends AppCompatActivity {
            public void onDataChange(DataSnapshot dataSnapshot) {
                mAuth = FirebaseAuth.getInstance();
                FirebaseUser user = mAuth.getCurrentUser();
-               Toast.makeText(ListOderActivity.this, "User: "+user.getEmail(), Toast.LENGTH_SHORT).show();
                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                    HashMap t = (HashMap) childSnapshot.getValue();
                    if(user.getUid().equals(t.get("id_user"))) {
-                       SetSeach(t.get("id").toString());
+                       SetSeach(t.get("id").toString(),t.get("name").toString(),t.get("address").toString());
                    }
 
                }
@@ -61,7 +60,8 @@ public class ListOderActivity   extends AppCompatActivity {
            }
        });
    }
-   private void SetSeach(final String nana)
+
+   private void SetSeach(final String nana,final String NameHotel,final String DiaChi)
    {
        def = FirebaseDatabase.getInstance().getReference("order");
        def.addValueEventListener(new ValueEventListener() {
@@ -72,7 +72,7 @@ public class ListOderActivity   extends AppCompatActivity {
                    HashMap t = (HashMap) childSnapshot.getValue();
                     if(nana.equals(t.get("hotel_id").toString())){
 
-                   mOderList.add(new Oder(t.get("name").toString(),t.get("Email").toString(),t.get("Phone").toString(),t.get("DateStarOrder").toString(),t.get("DateEndOrder").toString(),Integer.parseInt(t.get("RoomOrder").toString()),Float.parseFloat(t.get("TotalMoney").toString())
+                        mOderList.add(new Oder(NameHotel,DiaChi,t.get("name").toString(),t.get("Phone").toString(),t.get("DateStarOrder").toString(),t.get("DateEndOrder").toString(),Integer.parseInt(t.get("RoomOrder").toString()),Float.parseFloat(t.get("TotalMoney").toString())
                    ));
                }
                }

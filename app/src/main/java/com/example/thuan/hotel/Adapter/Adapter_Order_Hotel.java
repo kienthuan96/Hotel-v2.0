@@ -46,15 +46,17 @@ public class Adapter_Order_Hotel extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         View v = View.inflate(mContext, R.layout.listorder,null);
         TextView tvHoTEn = (TextView)v.findViewById(R.id.txtHT);
-        TextView tvEmail = (TextView)v.findViewById(R.id.txtEM);
+        TextView tvTenKhachSan = (TextView) v.findViewById(R.id.txtTKS);
+        TextView tvDiaChi = (TextView) v.findViewById(R.id.txtdiaC);
         TextView tvPhone = (TextView)v.findViewById(R.id.txtDT);
         TextView tvDateStarOder = (TextView)v.findViewById(R.id.txtND);
         TextView tvDateEndOder = (TextView)v.findViewById(R.id.txtNT);
         TextView RoomOder = (TextView)v.findViewById(R.id.txtSPD);
         TextView Totalmoney = (TextView)v.findViewById(R.id.txtTT);
 
+        tvDiaChi.setText(mOrderlist.get(i).getAddress_hotel());
+        tvTenKhachSan.setText(mOrderlist.get(i).getName_hotel());
         tvHoTEn.setText(mOrderlist.get(i).getName());
-        tvEmail.setText(mOrderlist.get(i).getEmail());
         tvPhone.setText(mOrderlist.get(i).getPhone());
         tvDateStarOder.setText(mOrderlist.get(i).getDateStartOrder());
         tvDateEndOder.setText(mOrderlist.get(i).getDateEndOrder());
