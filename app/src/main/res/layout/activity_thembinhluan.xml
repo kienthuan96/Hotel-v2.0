@@ -170,22 +170,13 @@
             android:orientation="horizontal">
             <Button
                 android:id="@+id/btnGuiBL"
-                android:layout_width="200dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#ff6f00"
                 android:textStyle="bold"
                 android:textAlignment="center"
                 android:textSize="25dp"
                 android:text="GỬI BÌNH LUẬN"/>
-            <Button
-                android:id="@+id/btnThoatBL"
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:background="#2d5c00"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:textSize="25dp"
-                android:text="THOÁT"/>
         </LinearLayout>
 
     </LinearLayout>

@@ -20,6 +20,7 @@ import com.example.thuan.hotel.Adapter.Adapter_Hotel;
 import com.example.thuan.hotel.Model.Hotel;
 import com.example.thuan.hotel.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -43,10 +44,12 @@ public class ListHotelActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_hotel);
         myRef = database.getReference("hotel");
 
-        Intent intent=getIntent();
-        Bundle bundle=intent.getBundleExtra("goi");
-        id_user=bundle.getString("id");
-
+//        Intent intent=getIntent();
+//        Bundle bundle=intent.getBundleExtra("goi");
+//        id_user=bundle.getString("id");
+        FirebaseAuth auth=FirebaseAuth.getInstance();
+        FirebaseUser user=auth.getCurrentUser();
+        id_user=user.getUid();
         id();
 
         readData();
