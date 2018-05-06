@@ -30,6 +30,7 @@ import com.example.thuan.hotel.Adapter.Adapter_Search_Hotel;
 import com.example.thuan.hotel.Model.Hotel;
 import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -82,8 +83,16 @@ public class SearchActivity extends AppCompatActivity {
             return true;
         switch (item.getItemId()) {
             case R.id.menuLogin:
-                Intent intent=new Intent(SearchActivity.this,LoginActivity.class);
-                startActivity(intent);
+                FirebaseUser user=mAuth.getCurrentUser();
+                if(user ==null){
+                    Intent intent=new Intent(SearchActivity.this,LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Intent intent1=new Intent(SearchActivity.this,ListHotelActivity.class);
+                    startActivity(intent1);
+                    finish();
+                }
                 return true;
             case R.id.menuNote:
                 Intent intent1=new Intent(SearchActivity.this,MenuGhiChuActivity.class);

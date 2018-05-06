@@ -5,16 +5,16 @@
     android:orientation="vertical">
 
     <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="420dp"
-       android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="420dp"
+        android:orientation="vertical">
 
         <ListView
-           android:id="@+id/listComment"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent">
-       </ListView>
-   </LinearLayout>
+            android:id="@+id/listComment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </ListView>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,14 +27,15 @@
             android:textSize="20dp"
             android:textAlignment="center"
             android:text="THÊM BÌNH LUẬN"/>
-        <Button
-            android:id="@+id/btnThoat"
+        <TextView
+            android:id="@+id/txtDiemTB"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#ffc800"
+            android:gravity="center"
             android:textSize="20dp"
             android:textAlignment="center"
-            android:text="THOÁT"/>
+            android:text="Diem"/>
     </LinearLayout>
 
 

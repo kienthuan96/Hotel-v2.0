@@ -9,6 +9,7 @@
     tools:context=".Activity.DetaiHotelActivity">
 
     <br.com.bloder.magic.view.MagicButton
+        android:background="#FF5722"
         android:id="@+id/clickFavorite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

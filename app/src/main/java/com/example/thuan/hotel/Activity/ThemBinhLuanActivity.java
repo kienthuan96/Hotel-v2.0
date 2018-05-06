@@ -47,14 +47,14 @@ public class ThemBinhLuanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_thembinhluan);
         mFirebaseDatabase = FirebaseDatabase.getInstance().getReference();
         loadData();
-          final Button  Thoat =  (Button) findViewById(R.id.btnThoatBL);
-            Thoat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent_Thoat = new Intent(ThemBinhLuanActivity.this, MainActivity.class);
-                startActivity(intent_Thoat);
-            }
-        });
+//          final Button  Thoat =  (Button) findViewById(R.id.btnThoatBL);
+//            Thoat.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent_Thoat = new Intent(ThemBinhLuanActivity.this, SearchActivity.class);
+//                startActivity(intent_Thoat);
+//            }
+//        });
             btnGuiBL.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
