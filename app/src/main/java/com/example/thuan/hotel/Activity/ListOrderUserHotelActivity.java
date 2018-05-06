@@ -47,7 +47,6 @@ public class ListOrderUserHotelActivity   extends AppCompatActivity {
 
                 }
 
-
                 adapter.notifyDataSetChanged();
             }
             @Override

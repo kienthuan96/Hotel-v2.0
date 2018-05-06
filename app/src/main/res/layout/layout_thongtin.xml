@@ -57,6 +57,19 @@
         android:layout_height="39dp"
         android:layout_below="@+id/rbKS"
         android:text="Service" />
+
+    <TextView
+        android:id="@+id/txtRate"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/txtService"
+        android:layout_marginEnd="35dp"
+        android:background="#428500"
+        android:gravity="center"
+        android:text="1.0"
+        android:textColor="#e1fa03" />
+
     <ImageView
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"

@@ -160,20 +160,21 @@ public class EditActivity extends AppCompatActivity {
                 chkBarEdit.isChecked(),
                 chkSwimmingPoolEdit.isChecked());
         hotel.setService(service);
-        hotel.setImg1(uploadIMG(uri_1));
-        hotel.setImg2(uploadIMG(uri_2));
-        hotel.setImg3(uploadIMG(uri_3));
+//        hotel.setImg1(uploadIMG(uri_1));
+//        hotel.setImg2(uploadIMG(uri_2));
+//        hotel.setImg3(uploadIMG(uri_3));
         hotel.setName(edtTenEdit.getText().toString());
         hotel.setCity(edtThanhPhoEdit.getText().toString());
         hotel.setDistrict(edtThanhPhoEdit.getText().toString());
         hotel.setAddress( edtDiaChiEdit.getText().toString());
         hotel.setNumberPhone(Integer.parseInt(edtSDTEdit.getText().toString()));
         hotel.setPrice(Float.parseFloat(edtGiaEdit.getText().toString()));
-        hotel.setId(temp);
+//        hotel.setId(temp);
+
 
         DatabaseReference myRef1=database.getReference().child(id_hotel);
         myRef1.setValue(hotel);
-
+        Toast.makeText(this, "Thanh cong", Toast.LENGTH_SHORT).show();
     }
 
     private void event(){

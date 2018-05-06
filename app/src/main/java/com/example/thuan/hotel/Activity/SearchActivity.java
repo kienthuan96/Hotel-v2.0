@@ -29,6 +29,7 @@ import android.widget.Toast;
 import com.example.thuan.hotel.Adapter.Adapter_Search_Hotel;
 import com.example.thuan.hotel.Model.Hotel;
 import com.firebase.client.Firebase;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -68,13 +69,15 @@ public class SearchActivity extends AppCompatActivity {
     TextView testSao;
     TextView test1;
     TextView testDiem;
-
+    FirebaseAuth mAuth=FirebaseAuth.getInstance();
     int progess = 0;
     int progessD = 0;
     float maxprice =0;
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
+//        if(mAuth!=null){
+//            item.getItemId().setEnabled(false);
+//        }
         if(t.onOptionsItemSelected(item))
             return true;
         switch (item.getItemId()) {

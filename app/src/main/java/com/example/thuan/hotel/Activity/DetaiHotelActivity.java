@@ -54,7 +54,7 @@ public class DetaiHotelActivity extends AppCompatActivity{
     final String DATABASE_NAME = "database.sqlite";
     SQLiteDatabase databaseSQL;
     TabHost tabHost;
-        Program pr;
+    Program pr;
 
     String id_hotel="";
     //Khai bao 2 Button Them va Thoat Comment
@@ -63,7 +63,7 @@ public class DetaiHotelActivity extends AppCompatActivity{
     private ListView listView_Comment ;
     private Adapter_BinhLuan adapter_binhLuan;
     private ArrayList<BinhLuan> data;
-    DatabaseReference mDatabase;
+    DatabaseReference mDatabase,mDatabase1;
     DatabaseReference myRef;
   private   float tongDiem  =0 ;
     private int countBL= 0 ;
@@ -71,7 +71,7 @@ public class DetaiHotelActivity extends AppCompatActivity{
 
 
     ImageView imgWifi,imgBar,imgRestaurant,imgSwimmingPool,imgPet;
-    TextView txtTenKS,txtDiaChiKS,txtGiaKS,txtSDTKS;
+    TextView txtTenKS,txtDiaChiKS,txtGiaKS,txtSDTKS,txtRate;
     ImageView img;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -170,7 +170,7 @@ public class DetaiHotelActivity extends AppCompatActivity{
                 txtGiaKS.setText(df.format(Math.round(hotel.getPrice()))+"");
                 txtDiaChiKS.setText(hotel.getAddress());
                 ratingBar.setRating(Float.parseFloat(hotel.getStars().toString()));
-
+                txtRate.setText(hotel.getRate()+"");
                     //Nhận dữ liệu truyền qua Comment
                   Program.tenKhachSan   = hotel.getName();
                   Program.IDKhachSan= hotel.getId();
@@ -223,6 +223,7 @@ public class DetaiHotelActivity extends AppCompatActivity{
         imgSwimmingPool=findViewById(R.id.imgSwimmingPool);
         arrayListHinhAnh=new ArrayList<>();
         lstHinhAnh=findViewById(R.id.lstImage);
+        txtRate=findViewById(R.id.txtRate);
         aniName= AnimationUtils.loadAnimation(this,R.anim.name_hotel);
     }
 
@@ -278,11 +279,11 @@ public class DetaiHotelActivity extends AppCompatActivity{
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 BinhLuan bl = dataSnapshot.getValue(BinhLuan.class);
                 tongDiem += bl.DiemBL;
-
                 data.add(bl);
                 countBL = data.size();
                 diemTBkhachSan = (float)tongDiem / countBL; // tính trung binhf cho nay
-                Toast.makeText(DetaiHotelActivity.this, "ĐIểm trung bình " + diemTBkhachSan, Toast.LENGTH_SHORT).show();
+
+//                Toast.makeText(DetaiHotelActivity.this, "ĐIểm trung bình " + diemTBkhachSan, Toast.LENGTH_SHORT).show();
              //   Toast.makeText(DetaiHotelActivity.this, "Đã load dữ liệu thành công! ", Toast.LENGTH_SHORT).show();
                 adapter_binhLuan.notifyDataSetChanged();
             }
