@@ -78,7 +78,8 @@ public class DetaiHotelActivity extends AppCompatActivity{
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     Hotel hotel;
     RatingBar ratingBar;
-    MagicButton clickFavorite;
+//    MagicButton clickFavorite;
+    Button clickFavorite;
     ArrayList<String> arrayListHinhAnh;
     ListView lstHinhAnh;
     Animation aniName;
@@ -129,7 +130,7 @@ public class DetaiHotelActivity extends AppCompatActivity{
         load();
         readData_BinhLuan();
         //Toast.makeText(DetaiHotelActivity.this,"Load",Toast.LENGTH_SHORT).show();
-        clickFavorite.setMagicButtonClickListener(new View.OnClickListener() {
+        clickFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addEventFavorite();
