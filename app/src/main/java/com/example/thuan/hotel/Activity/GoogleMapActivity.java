@@ -250,7 +250,7 @@ public class GoogleMapActivity extends AppCompatActivity implements GoogleMap.On
             PolylineOptions polylineOptions = new PolylineOptions().
                     geodesic(true).
                     color(Color.BLUE).
-                    width(10);
+                    width(20);
             for (int i = 0; i < route.points.size(); i++)
                 polylineOptions.add(route.points.get(i));
 
