@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@drawable/iconchung"
+                />
+
+            <TextView
+                android:id="@+id/txtIDPM"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:background="#156b00"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Đây là ID"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/motaMP"
+                android:paddingTop="20dp"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="#c2c2c2"
+                android:text="Đây là mô tả "/>
+            <TextView
+                android:id="@+id/txtTenMP"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                android:textColor="#000000"
+                android:background="#156b00"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Đây là Tên"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
